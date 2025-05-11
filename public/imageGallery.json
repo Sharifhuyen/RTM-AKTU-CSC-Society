@@ -1,0 +1,146 @@
+[
+    {
+        "sl": 1,
+        "title": "Hackathon 2025",
+        "description": "Join our annual 24-hour coding marathon to build innovative projects and win prizes!",
+        "imageUrl": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3",
+        "category": "Event",
+        "uploadedBy": "CSC Admin",
+        "dateUploaded": "2025-01-15"
+    },
+    {
+        "sl": 2,
+        "title": "Intro to Python Workshop",
+        "description": "A beginner-friendly session to learn Python programming with hands-on exercises.",
+        "imageUrl": "https://images.unsplash.com/photo-1516321497487-e288fb19713f",
+        "category": "Workshop",
+        "uploadedBy": "Jane Doe",
+        "dateUploaded": "2025-02-01"
+    },
+    {
+        "sl": 3,
+        "title": "Machine Learning Symposium",
+        "description": "Dive into the latest trends in machine learning with talks from academic and industry leaders.",
+        "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXjslOWlBWtKoJseUc_zJ6xWbjZl_3lQrsiw&s",
+        "category": "Event",
+        "uploadedBy": "CSC Admin",
+        "dateUploaded": "2025-02-12"
+    },
+    {
+        "sl": 4,
+        "title": "Web Development Bootcamp",
+        "description": "Learn HTML, CSS, and JavaScript to build your own website in this 3-day bootcamp.",
+        "imageUrl": "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+        "category": "Workshop",
+        "uploadedBy": "John Smith",
+        "dateUploaded": "2025-03-05"
+    },
+    {
+        "sl": 5,
+        "title": "CSC Code Repository",
+        "description": "Access our open-source repository of student projects and contribute to collaborative coding.",
+        "imageUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97",
+        "category": "Resource",
+        "uploadedBy": "CSC Admin",
+        "dateUploaded": "2025-01-20"
+    },
+    {
+        "sl": 6,
+        "title": "Cybersecurity Awareness Seminar",
+        "description": "Learn about online safety, encryption, and ethical hacking from cybersecurity professionals.",
+        "imageUrl": "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f",
+        "category": "Event",
+        "uploadedBy": "Alice Brown",
+        "dateUploaded": "2025-03-15"
+    },
+    {
+        "sl": 7,
+        "title": "Game Development Jam",
+        "description": "Create your own video game in a weekend-long game dev competition using Unity.",
+        "imageUrl": "https://images.unsplash.com/photo-1542751371-adc38448a05e",
+        "category": "Event",
+        "uploadedBy": "CSC Admin",
+        "dateUploaded": "2025-04-01"
+    },
+    {
+        "sl": 8,
+        "title": "Big Data Analytics Workshop",
+        "description": "Explore big data tools like Hadoop and Spark in this hands-on workshop for beginners.",
+        "imageUrl": "https://www.advantagepro.in/wp-content/uploads/2020/11/bigdata.jpg",
+        "category": "Workshop",
+        "uploadedBy": "Sophie Clark",
+        "dateUploaded": "2025-04-08"
+    },
+    {
+        "sl": 9,
+        "title": "CSC Mentorship Program",
+        "description": "Pair up with senior students to guide you through your CS journey and career prep.",
+        "imageUrl": "https://images.unsplash.com/photo-1523240795612-9a054b0db644",
+        "category": "Program",
+        "uploadedBy": "CSC Admin",
+        "dateUploaded": "2025-02-20"
+    },
+    {
+        "sl": 10,
+        "title": "Cloud Computing Workshop",
+        "description": "Get hands-on experience with AWS and learn the basics of cloud infrastructure.",
+        "imageUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa",
+        "category": "Workshop",
+        "uploadedBy": "Michael Lee",
+        "dateUploaded": "2025-03-25"
+    },
+    {
+        "sl": 11,
+        "title": "Tech Career Fair",
+        "description": "Connect with top tech companies and explore internship and job opportunities.",
+        "imageUrl": "https://images.unsplash.com/photo-1516321497487-e288fb19713f",
+        "category": "Event",
+        "uploadedBy": "CSC Admin",
+        "dateUploaded": "2025-04-20"
+    },
+    {
+        "sl": 12,
+        "title": "Open Source Contribution Guide",
+        "description": "A step-by-step resource to help students contribute to open-source projects.",
+        "imageUrl": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3",
+        "category": "Resource",
+        "uploadedBy": "Sarah Davis",
+        "dateUploaded": "2025-01-30"
+    },
+    {
+        "sl": 13,
+        "title": "Mobile App Development Workshop",
+        "description": "Build your first Android app using Kotlin in this interactive session.",
+        "imageUrl": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3",
+        "category": "Workshop",
+        "uploadedBy": "David Kim",
+        "dateUploaded": "2025-04-05"
+    },
+    {
+        "sl": 14,
+        "title": "CSC Study Group Kickoff",
+        "description": "Join our weekly study groups to collaborate on coursework and prep for exams.",
+        "imageUrl": "https://images.unsplash.com/photo-1524178232363-1fb2b075b655",
+        "category": "Program",
+        "uploadedBy": "CSC Admin",
+        "dateUploaded": "2025-02-15"
+    },
+    {
+        "sl": 15,
+        "title": "Blockchain Basics Seminar",
+        "description": "Understand the fundamentals of blockchain technology and its applications.",
+        "imageUrl": "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d",
+        "category": "Event",
+        "uploadedBy": "Liam Carter",
+        "dateUploaded": "2025-03-10"
+    },
+    {
+        "sl": 16,
+        "title": "CSC Newsletter Archive",
+        "description": "Browse past newsletters for updates, tips, and highlights from the CSC community.",
+        "imageUrl": "https://images.unsplash.com/photo-1499750310107-5fef28a66643",
+        "category": "Resource",
+        "uploadedBy": "CSC Admin",
+        "dateUploaded": "2025-01-10"
+    }
+]
