@@ -11,6 +11,7 @@ import AboutUs from './componenets/pages/About';
 import AllMembers from './componenets/pages/AllMembers';
 import ImageGallery from './componenets/pages/ImageGallary';
 import ContactUs from './componenets/pages/ContactUs';
+import CreateBlog from './componenets/pages/CreateBlog';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/members" element={<AllMembers />} />
           <Route path="/gallery" element={<ImageGallery />} />
           <Route path="/contact" element={<ContactUs />} />
+          <Route path="/createBlog" element={<CreateBlog />} />
         </Routes>
       </div>
     </Router>
