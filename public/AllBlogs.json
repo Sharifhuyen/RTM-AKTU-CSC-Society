@@ -1,0 +1,72 @@
+[
+    {
+        "id": 1,
+        "title": "Exploring the Future of Quantum Computing",
+        "authorName": "Alice Thompson",
+        "createdAt": "2025-05-10T14:30:00Z",
+        "content": "<h2>Quantum Computing: A New Frontier</h2><p>Quantum computing is revolutionizing the way we approach complex problems in computer science. Unlike classical computers, which rely on bits to represent 0s and 1s, quantum computers use qubits that can exist in multiple states simultaneously, thanks to superposition and entanglement.</p><h3>Why It Matters</h3><p>This technology promises to solve problems intractable for classical systems, such as factoring large numbers exponentially faster, optimizing massive datasets, and simulating molecular structures for drug discovery. For CSC students, understanding quantum computing opens doors to cutting-edge research and industry opportunities.</p><h3>Key Concepts</h3><ul><li><strong>Superposition:</strong> Qubits can represent both 0 and 1 simultaneously.</li><li><strong>Entanglement:</strong> Qubits can be correlated, enabling faster information processing.</li><li><strong>Quantum Gates:</strong> Operations that manipulate qubits, analogous to logic gates in classical computing.</li></ul><p>At our CSC society, we’re hosting a workshop next month to dive into quantum algorithms like Shor’s and Grover’s. Join us to explore tools like IBM’s Qiskit and Microsoft’s Quantum Development Kit. This is a chance to get hands-on experience and network with peers passionate about the future of computing.</p>",
+        "imageURL": "https://images.unsplash.com/photo-1628595351029-c2bf17511435?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80",
+        "tag": "Quantum Computing",
+        "status": "Pending"
+    },
+    {
+        "id": 2,
+        "title": "Demystifying Machine Learning Algorithms",
+        "authorName": "Bob Patel",
+        "createdAt": "2025-05-11T09:15:00Z",
+        "content": "<h2>Understanding Machine Learning</h2><p>Machine learning (ML) is a cornerstone of modern computer science, enabling systems to learn from data without explicit programming. From recommendation systems to autonomous vehicles, ML algorithms are transforming industries.</p><h3>Popular Algorithms</h3><p>Here’s a breakdown of key ML algorithms every CSC student should know:</p><ul><li><strong>Linear Regression:</strong> Predicts continuous outcomes, like house prices.</li><li><strong>Decision Trees:</strong> Models decisions based on feature splits, used in classification tasks.</li><li><strong>Neural Networks:</strong> Mimics human brain structure for tasks like image recognition.</li></ul><h3>Getting Started</h3><p>For beginners, Python libraries like scikit-learn and TensorFlow are excellent starting points. Our CSC society recently organized a Kaggle competition where students built ML models to predict student performance. The experience taught us the importance of data preprocessing, feature engineering, and hyperparameter tuning. ML isn’t just about algorithms; it’s about understanding data and its real-world implications. Join our next hackathon to test your skills and collaborate on exciting projects!</p>",
+        "imageURL": "https://www.infoworld.com/wp-content/uploads/2024/06/emerging-tech_ai_machine-learning-100748222-orig.jpg?quality=50&strip=all&w=1024",
+        "tag": "Machine Learning",
+        "status": "Pending"
+    },
+    {
+        "id": 3,
+        "title": "The Rise of Ethical Hacking in Cybersecurity",
+        "authorName": "Clara Nguyen",
+        "createdAt": "2025-05-12T16:45:00Z",
+        "content": "<h2>Ethical Hacking 101</h2><p>Cybersecurity is a critical field in computer science, and ethical hacking is at its forefront. Ethical hackers, or white-hat hackers, identify vulnerabilities in systems to protect organizations from malicious attacks.</p><h3>Core Skills</h3><p>To become an ethical hacker, you need:</p><ul><li><strong>Networking Knowledge:</strong> Understanding protocols like TCP/IP and DNS.</li><li><strong>Penetration Testing:</strong> Simulating attacks to find weaknesses.</li><li><strong>Scripting:</strong> Writing scripts in Python or Bash to automate tasks.</li></ul><h3>Why It’s Exciting</h3><p>Ethical hacking is like solving a puzzle with real-world stakes. Our CSC society’s recent capture-the-flag (CTF) event challenged students to exploit vulnerabilities in a controlled environment. Participants learned tools like Metasploit and Wireshark while collaborating in teams. The field is growing, with certifications like CEH and OSCP in high demand. If you’re passionate about protecting digital infrastructure, join our cybersecurity club to learn more and participate in future CTFs!</p>",
+        "imageURL": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80",
+        "tag": "Cybersecurity",
+        "status": "Pending"
+    },
+    {
+        "id": 4,
+        "title": "Building Your First Mobile App with Flutter",
+        "authorName": "David Kim",
+        "createdAt": "2025-05-13T11:20:00Z",
+        "content": "<h2>Flutter: Cross-Platform Development</h2><p>Flutter, Google’s UI toolkit, allows developers to build natively compiled applications for mobile, web, and desktop from a single codebase. It’s a game-changer for CSC students looking to create apps efficiently.</p><h3>Why Choose Flutter?</h3><p>Flutter’s advantages include:</p><ul><li><strong>Hot Reload:</strong> Instantly see changes during development.</li><li><strong>Rich Widgets:</strong> Customizable UI components for iOS and Android.</li><li><strong>Dart Language:</strong> Easy to learn for JavaScript or Java developers.</li></ul><h3>Our Experience</h3><p>Our CSC society’s app development team recently built a study planner app using Flutter. We integrated Firebase for authentication and cloud storage, creating a seamless user experience. The project taught us state management with Provider and the importance of responsive design. Whether you’re a beginner or an experienced coder, Flutter’s community and resources make it accessible. Join our next workshop to start building your own app and showcase it at our annual tech fest!</p>",
+        "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8myZxYEuVI4EBsQger66UCbGvDSuRaUNS-A&s",
+        "tag": "Mobile Development",
+        "status": "Pending"
+    },
+    {
+        "id": 5,
+        "title": "The Power of Data Structures in Competitive Programming",
+        "authorName": "Emma Wilson",
+        "createdAt": "2025-05-14T08:50:00Z",
+        "content": "<h2>Mastering Data Structures</h2><p>Data structures are the backbone of efficient algorithms, especially in competitive programming. CSC students aiming for platforms like Codeforces or LeetCode need to master them to solve problems under time constraints.</p><h3>Essential Data Structures</h3><p>Here are some must-know structures:</p><ul><li><strong>Arrays:</strong> Simple but powerful for storing sequential data.</li><li><strong>Binary Trees:</strong> Useful for hierarchical data and searching.</li><li><strong>Graphs:</strong> Key for problems involving networks or paths.</li></ul><h3>Our Journey</h3><p>Our CSC society’s competitive programming club recently tackled a graph-based problem set. Using Dijkstra’s algorithm and adjacency lists, we optimized solutions for shortest-path problems. The experience highlighted the importance of choosing the right data structure for the task. We also learned debugging techniques and time complexity analysis. If you’re new to competitive programming, start with arrays and linked lists, then progress to advanced structures. Join our weekly coding sessions to practice and compete in our upcoming intra-university contest!</p>",
+        "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9ezfwoeGEKcVYBKIDlcsb-YoojHmeZy3yeQ&s",
+        "tag": "Competitive Programming",
+        "status": "Pending"
+    },
+    {
+        "id": 6,
+        "title": "Introduction to Blockchain Technology",
+        "authorName": "Faisal Ahmed",
+        "createdAt": "2025-05-14T13:10:00Z",
+        "content": "<h2>Blockchain Beyond Cryptocurrency</h2><p>Blockchain technology, known for powering cryptocurrencies like Bitcoin, has applications far beyond finance. It’s a decentralized, secure ledger that CSC students can leverage in various domains.</p><h3>Key Features</h3><p>Blockchain’s strengths include:</p><ul><li><strong>Immutability:</strong> Once data is recorded, it cannot be altered.</li><li><strong>Smart Contracts:</strong> Self-executing contracts coded on platforms like Ethereum.</li><li><strong>Decentralization:</strong> No single point of failure, enhancing security.</li></ul><h3>Our Exploration</h3><p>Our CSC society developed a prototype supply chain tracking system using Hyperledger Fabric. The project taught us about consensus mechanisms and chaincode development. Blockchain’s potential in healthcare, voting systems, and data integrity is immense. For students, learning Solidity or exploring platforms like Corda can be a great start. Our next seminar will cover building decentralized apps (DApps). Join us to learn how blockchain can shape the future of technology!</p>",
+        "imageURL": "https://www.investopedia.com/thmb/pzT2wbISy-wNtMypVlBjr39dydg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Blockchain_final-086b5b7b9ef74ecf9f20fe627dba1e34.png",
+        "tag": "Blockchain",
+        "status": "Pending"
+    },
+    {
+        "id": 7,
+        "title": "Cloud Computing: AWS vs. Azure vs. GCP",
+        "authorName": "Grace Lee",
+        "createdAt": "2025-05-14T17:25:00Z",
+        "content": "<h2>Navigating Cloud Platforms</h2><p>Cloud computing is reshaping how we design, deploy, and scale applications. The three major providers—Amazon Web Services (AWS), Microsoft Azure, and Google Cloud Platform (GCP)—each offer unique strengths.</p><h3>Comparison Overview</h3><ul><li><strong>AWS:</strong> Offers the widest range of services and global reach.</li><li><strong>Azure:</strong> Integrates well with Microsoft products, ideal for enterprise environments.</li><li><strong>GCP:</strong> Known for its data and machine learning services.</li></ul><h3>Our Experience</h3><p>At our CSC society, we ran a cloud challenge where students deployed web apps across all three platforms. We explored compute instances, storage buckets, and load balancers. Participants gained hands-on experience with tools like AWS EC2, Azure App Services, and GCP Cloud Run. Join our upcoming cloud workshop to build your first scalable cloud-native app and compare performance across providers!</p>",
+        "imageURL": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80",
+        "tag": "Cloud Computing",
+        "status": "Pending"
+    }
+]

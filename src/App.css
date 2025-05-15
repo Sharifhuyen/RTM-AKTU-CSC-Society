@@ -1,1 +1,31 @@
 @import "tailwindcss";
+
+
+.rich-content h1,
+.rich-content h2,
+.rich-content h3,
+.rich-content h4,
+.rich-content h5,
+.rich-content h6 {
+    font-weight: 700;
+    /* Tailwind's font-bold */
+    margin-top: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+/* Optional: Add spacing for paragraphs and other elements */
+.rich-content p {
+    margin-bottom: 1rem;
+}
+
+.rich-content ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.rich-content ol {
+    list-style-type: decimal;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+}

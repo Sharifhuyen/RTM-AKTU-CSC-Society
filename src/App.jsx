@@ -12,6 +12,8 @@ import AllMembers from './componenets/pages/AllMembers';
 import ImageGallery from './componenets/pages/ImageGallary';
 import ContactUs from './componenets/pages/ContactUs';
 import CreateBlog from './componenets/pages/CreateBlog';
+import BlogDetails from './componenets/pages/BlogDetails';
+import AllBlogs from './componenets/pages/AllBlogs';
 
 function App() {
   return (
@@ -28,6 +30,7 @@ function App() {
             </>
           } />
           <Route path="/event/:eventName" element={<EventDetails />} />
+          <Route path="/blog/:id" element={<BlogDetails />} />
           <Route path="/events" element={<EventsDisplay />} />
           <Route path="/joinus" element={<JoinUs />} />
           <Route path="/about" element={<AboutUs />} />
@@ -35,6 +38,7 @@ function App() {
           <Route path="/gallery" element={<ImageGallery />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/createBlog" element={<CreateBlog />} />
+          <Route path="/allBlogs" element={<AllBlogs />} />
         </Routes>
       </div>
     </Router>
