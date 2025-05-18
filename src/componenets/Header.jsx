@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import RTMAKTULogo from "../assets/RTMAKTULogo.png";
 import { FaBars, FaTimes, FaSignInAlt, FaUserPlus } from "react-icons/fa";
 
@@ -6,13 +7,13 @@ const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const navItems = [
-        "Home",
-        "About Us",
-        "Events",
-        "Members",
-        "Gallery",
-        "Blog",
-        "Contact",
+        { name: "Home", path: "/" },
+        { name: "About Us", path: "/about" },
+        { name: "Events", path: "/events" },
+        { name: "Members", path: "/members" },
+        { name: "Gallery", path: "/gallery" },
+        { name: "Blog", path: "/allBlogs" },
+        { name: "Contact", path: "/contact" },
     ];
 
     return (
@@ -32,32 +33,32 @@ const Header = () => {
                     {/* Middle: Navigation Items - Hidden on small screens */}
                     <div className="hidden lg:flex lg:space-x-6">
                         {navItems.map((item) => (
-                            <a
-                                key={item}
-                                href={`#${item.toLowerCase().replace(/\s+/g, "")}`}
+                            <Link
+                                key={item.name}
+                                to={item.path}
                                 className="text-gray-700 hover:text-blue-600 transition duration-200"
                             >
-                                {item}
-                            </a>
+                                {item.name}
+                            </Link>
                         ))}
                     </div>
 
                     {/* Right: Login & Join Us */}
                     <div className="hidden lg:flex items-center space-x-4">
-                        <a
-                            href="#login"
+                        <Link
+                            to="/login"
                             className="flex items-center text-gray-700 hover:text-blue-600 transition duration-200"
                         >
                             <FaSignInAlt className="mr-1" />
                             Login
-                        </a>
-                        <a
-                            href="#joinus"
+                        </Link>
+                        <Link
+                            to="/joinus"
                             className="flex items-center bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition duration-200"
                         >
                             <FaUserPlus className="mr-1" />
                             Join Us
-                        </a>
+                        </Link>
                     </div>
 
                     {/* Mobile Menu Toggle */}
@@ -77,28 +78,31 @@ const Header = () => {
                 <div className="lg:hidden bg-white px-4 pb-4 pt-2 shadow-lg">
                     <div className="flex flex-col space-y-3">
                         {navItems.map((item) => (
-                            <a
-                                key={item}
-                                href={`#${item.toLowerCase().replace(/\s+/g, "")}`}
+                            <Link
+                                key={item.name}
+                                to={item.path}
                                 className="text-gray-700 hover:text-blue-600 transition duration-200"
+                                onClick={() => setIsOpen(false)}
                             >
-                                {item}
-                            </a>
+                                {item.name}
+                            </Link>
                         ))}
-                        <a
-                            href="#login"
+                        <Link
+                            to="/login"
                             className="flex items-center text-gray-700 hover:text-blue-600"
+                            onClick={() => setIsOpen(false)}
                         >
                             <FaSignInAlt className="mr-1" />
                             Login
-                        </a>
-                        <a
-                            href="#joinus"
+                        </Link>
+                        <Link
+                            to="/joinus"
                             className="flex items-center bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700"
+                            onClick={() => setIsOpen(false)}
                         >
                             <FaUserPlus className="mr-1" />
                             Join Us
-                        </a>
+                        </Link>
                     </div>
                 </div>
             )}

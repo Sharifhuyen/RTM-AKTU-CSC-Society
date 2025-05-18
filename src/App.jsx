@@ -14,6 +14,10 @@ import ContactUs from './componenets/pages/ContactUs';
 import CreateBlog from './componenets/pages/CreateBlog';
 import BlogDetails from './componenets/pages/BlogDetails';
 import AllBlogs from './componenets/pages/AllBlogs';
+import Login from './componenets/pages/Login';
+import Footer from './componenets/Footer';
+import CreateEvent from './componenets/pages/CreateEvent';
+import CreateGalleryItem from './componenets/pages/CreateGalleryItem';
 
 function App() {
   return (
@@ -39,8 +43,13 @@ function App() {
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/createBlog" element={<CreateBlog />} />
           <Route path="/allBlogs" element={<AllBlogs />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/createEvent" element={<CreateEvent />} />
+          <Route path="/createGallery" element={<CreateGalleryItem />} />
         </Routes>
       </div>
+      <Footer />
+
     </Router>
   );
 }
