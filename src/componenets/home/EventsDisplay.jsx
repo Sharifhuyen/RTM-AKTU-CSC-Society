@@ -9,7 +9,7 @@ const EventsDisplay = () => {
     const [isUpcoming, setIsUpcoming] = useState(true);
 
     useEffect(() => {
-        fetch('/cscEvents.json')
+        fetch('http://localhost:5000/events')
             .then((res) => res.json())
             .then((data) => {
                 setEvents(data);
@@ -27,6 +27,7 @@ const EventsDisplay = () => {
         });
         setFilteredEvents(filtered);
     };
+
 
     return (
         <div className="container mx-auto px-4 mt-6">

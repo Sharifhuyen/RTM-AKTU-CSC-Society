@@ -3,24 +3,23 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 
 const EventDetails = () => {
-    const { eventName } = useParams();
+    const { id } = useParams();
     const [event, setEvent] = React.useState(null);
 
     React.useEffect(() => {
-        fetch('/cscEvents.json')
+        fetch('http://localhost:5000/events')
             .then((res) => res.json())
             .then((data) => {
-                const selectedEvent = data.find((e) => e.eventName === eventName);
+                const selectedEvent = data.find((e) => e._id === id);
                 setEvent(selectedEvent);
             })
             .catch((error) => console.error('Error fetching event details:', error));
-    }, [eventName]);
+    }, [id]);
 
     if (!event) {
         return <div>Loading...</div>;
     }
 
-    console.log(eventName);
 
     return (
         <div className="max-w-4xl mx-auto px-4 py-10 mt-10">

@@ -1,6 +1,5 @@
 [
     {
-        "id": 1,
         "title": "Exploring the Future of Quantum Computing",
         "authorName": "Alice Thompson",
         "createdAt": "2025-05-10T14:30:00Z",
@@ -10,7 +9,6 @@
         "status": "Pending"
     },
     {
-        "id": 2,
         "title": "Demystifying Machine Learning Algorithms",
         "authorName": "Bob Patel",
         "createdAt": "2025-05-11T09:15:00Z",
@@ -20,7 +18,6 @@
         "status": "Pending"
     },
     {
-        "id": 3,
         "title": "The Rise of Ethical Hacking in Cybersecurity",
         "authorName": "Clara Nguyen",
         "createdAt": "2025-05-12T16:45:00Z",
@@ -30,7 +27,6 @@
         "status": "Pending"
     },
     {
-        "id": 4,
         "title": "Building Your First Mobile App with Flutter",
         "authorName": "David Kim",
         "createdAt": "2025-05-13T11:20:00Z",
@@ -40,7 +36,6 @@
         "status": "Pending"
     },
     {
-        "id": 5,
         "title": "The Power of Data Structures in Competitive Programming",
         "authorName": "Emma Wilson",
         "createdAt": "2025-05-14T08:50:00Z",
@@ -50,7 +45,6 @@
         "status": "Pending"
     },
     {
-        "id": 6,
         "title": "Introduction to Blockchain Technology",
         "authorName": "Faisal Ahmed",
         "createdAt": "2025-05-14T13:10:00Z",
@@ -60,7 +54,6 @@
         "status": "Pending"
     },
     {
-        "id": 7,
         "title": "Cloud Computing: AWS vs. Azure vs. GCP",
         "authorName": "Grace Lee",
         "createdAt": "2025-05-14T17:25:00Z",

@@ -40,11 +40,12 @@ const CreateGalleryItem = () => {
         try {
             const payload = {
                 ...formData,
-                uploadedBy: "AutoFilledUser",
-                dateUploaded: getCurrentDate()
+                uploadedBy: "Sharif Ahmed Huyen",
+                dateUploaded: getCurrentDate(),
+                createdAt: new Date().toISOString()
             };
 
-            const response = await fetch('https://your-api-endpoint.com/gallery', {
+            const response = await fetch('http://localhost:5000/gallery', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -50,14 +50,13 @@ const WarningModal = ({ onContinue, onCancel }) => (
 
 const CreateBlog = () => {
     const [title, setTitle] = useState("");
-    const [image, setImage] = useState(null);
+    const [imageURL, setImageURL] = useState("");
+    const [tag, setTag] = useState("");
     const [content, setContent] = useState("");
     const [alert, setAlert] = useState({ type: "", message: "" });
     const [showEditor, setShowEditor] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [hasConfirmed, setHasConfirmed] = useState(false);
-
-    const handleImageUpload = (e) => setImage(e.target.files[0]);
 
     const showAlert = (type, message) => {
         setAlert({ type, message });
@@ -72,8 +71,8 @@ const CreateBlog = () => {
         const textOnly = doc.body.textContent || "";
         const wordCount = textOnly.trim().split(/\s+/).filter(Boolean).length;
 
-        if (!title.trim() || !image || textOnly.trim().length === 0) {
-            showAlert("error", "Title, image, and meaningful content are required.");
+        if (!title.trim() || !imageURL || !tag || textOnly.trim().length === 0) {
+            showAlert("error", "Title, image, tag, and meaningful content are required.");
             return;
         }
 
@@ -82,10 +81,35 @@ const CreateBlog = () => {
             return;
         }
 
+        const createdAt = new Date().toISOString();
+        const authorName = "Sharif Ahmad Huyen";
+
+        const blogData = {
+            title,
+            imageURL,
+            content,
+            tag,
+            createdAt,
+            authorName,
+        };
+
         try {
+            const response = await fetch("http://localhost:5000/blog", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(blogData),
+            });
+
+            if (!response.ok) {
+                throw new Error("Failed to submit blog.");
+            }
+
             showAlert("success", "Blog submitted successfully!");
             setTitle("");
-            setImage(null);
+            setImageURL("");
+            setTag("");
             setContent("");
         } catch (err) {
             showAlert("error", err.message || "Submission failed.");
@@ -140,14 +164,37 @@ const CreateBlog = () => {
                     <div>
                         <label className="block text-sm font-semibold mb-1 flex items-center gap-2">
                             <FaImage className="text-blue-600" />
-                            Upload Image
+                            Image URL
                         </label>
                         <input
-                            type="file"
-                            accept="image/*"
-                            onChange={handleImageUpload}
-                            className="block w-full text-sm text-gray-700 border border-gray-300 rounded p-2 cursor-pointer"
+                            type="text"
+                            value={imageURL || ""}
+                            onChange={(e) => setImageURL(e.target.value)}
+                            className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder="Enter direct image URL (e.g., https://example.com/image.jpg)"
                         />
+                    </div>
+
+                    <div>
+                        <label className="block text-sm font-semibold mb-1 text-blue-600">
+                            Select Tag
+                        </label>
+                        <select
+                            value={tag}
+                            onChange={(e) => setTag(e.target.value)}
+                            className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required
+                        >
+                            <option value="">-- Choose a tag --</option>
+                            <option value="Quantum Computing">Quantum Computing</option>
+                            <option value="Machine Learning">Machine Learning</option>
+                            <option value="Cybersecurity">Cybersecurity</option>
+                            <option value="Mobile Development">Mobile Development</option>
+                            <option value="Competitive Programming">Competitive Programming</option>
+                            <option value="Blockchain">Blockchain</option>
+                            <option value="Cloud Computing">Cloud Computing</option>
+                            <option value="Others">Others</option>
+                        </select>
                     </div>
 
                     <div>

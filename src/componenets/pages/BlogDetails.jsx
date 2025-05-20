@@ -6,10 +6,10 @@ const BlogDetails = () => {
     const [blog, setBlog] = useState(null);
 
     useEffect(() => {
-        fetch('/AllBlogs.json')
+        fetch('http://localhost:5000/blogs')
             .then(res => res.json())
             .then(data => {
-                const found = data.find(b => b.id === parseInt(id));
+                const found = data.find(b => b._id === id);
                 setBlog(found);
             });
     }, [id]);

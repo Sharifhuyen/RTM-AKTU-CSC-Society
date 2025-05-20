@@ -10,7 +10,7 @@ export default function ImageGallery() {
     const [selectedImage, setSelectedImage] = useState(null);
 
     useEffect(() => {
-        fetch("/imageGallery.json")
+        fetch("http://localhost:5000/galleries")
             .then((res) => res.json())
             .then((data) => {
                 setImages(data);
@@ -41,8 +41,8 @@ export default function ImageGallery() {
                         key={cat}
                         onClick={() => handleCategoryChange(cat)}
                         className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${selectedCategory === cat
-                                ? "bg-blue-600 text-white"
-                                : "bg-gray-200 text-gray-800 hover:bg-gray-300"
+                            ? "bg-blue-600 text-white"
+                            : "bg-gray-200 text-gray-800 hover:bg-gray-300"
                             }`}
                     >
                         {cat}
@@ -106,7 +106,7 @@ export default function ImageGallery() {
                                         <br />
                                         <span>Uploaded By: {selectedImage.uploadedBy}</span>
                                         <br />
-                                        <span>Date: {selectedImage.dateUploaded}</span>
+                                        <span>Date: {selectedImage.createdAt}</span>
                                     </div>
                                 </div>
                             </motion.div>

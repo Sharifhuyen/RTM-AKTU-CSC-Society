@@ -6,7 +6,7 @@ const AllBlogs = () => {
     const [tagFilter, setTagFilter] = useState('');
 
     useEffect(() => {
-        fetch('/AllBlogs.json')
+        fetch('http://localhost:5000/blogs')
             .then(res => res.json())
             .then(data => setBlogs(data));
     }, []);

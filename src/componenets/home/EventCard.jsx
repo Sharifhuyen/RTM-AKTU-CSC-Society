@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const EventCard = ({ event }) => {
-    const { eventImageUrl, eventName, eventDay, eventDate } = event;
+    const { eventImageUrl, eventName, eventDay, eventDate, _id } = event;
 
     return (
         <div className="max-w-sm bg-white rounded-lg shadow-lg overflow-hidden mx-4 my-6">
@@ -16,7 +16,7 @@ const EventCard = ({ event }) => {
                 <div className="mt-4">
                     <Link
 
-                        to={`/event/${eventName}`}
+                        to={`/event/${_id}`}
                         className="bg-blue-500 text-white px-4 py-2 rounded-lg inline-block"
                     >
                         Learn More

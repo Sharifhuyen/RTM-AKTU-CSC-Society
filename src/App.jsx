@@ -18,6 +18,14 @@ import Login from './componenets/pages/Login';
 import Footer from './componenets/Footer';
 import CreateEvent from './componenets/pages/CreateEvent';
 import CreateGalleryItem from './componenets/pages/CreateGalleryItem';
+import UpdateBlog from './componenets/Dashboard/UpdateBlog';
+import ManageBlogs from './componenets/Dashboard/ManageBlogs';
+import ManageEvent from './componenets/Dashboard/ManageEvent';
+import UpdateEvent from './componenets/Dashboard/UpdateEvent';
+import ManageGallery from './componenets/Dashboard/ManageGallery';
+import UpdateGallery from './componenets/Dashboard/UpdateGallery';
+import Dashboard from './componenets/Dashboard/Dashboard';
+import MyBlogs from './componenets/Dashboard/MyBlogs';
 
 function App() {
   return (
@@ -33,7 +41,7 @@ function App() {
               <JoinUs />
             </>
           } />
-          <Route path="/event/:eventName" element={<EventDetails />} />
+          <Route path="/event/:id" element={<EventDetails />} />
           <Route path="/blog/:id" element={<BlogDetails />} />
           <Route path="/events" element={<EventsDisplay />} />
           <Route path="/joinus" element={<JoinUs />} />
@@ -46,10 +54,17 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/createEvent" element={<CreateEvent />} />
           <Route path="/createGallery" element={<CreateGalleryItem />} />
+          <Route path="/updateBlog" element={<UpdateBlog />} />
+          <Route path="/manageBlogs" element={<ManageBlogs />} />
+          <Route path="/manageEvents" element={<ManageEvent />} />
+          <Route path="/updateEvent" element={<UpdateEvent />} />
+          <Route path="/manageGallery" element={<ManageGallery />} />
+          <Route path="/updateGallery" element={<UpdateGallery />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/myBlogs" element={<MyBlogs />} />
         </Routes>
       </div>
       <Footer />
-
     </Router>
   );
 }

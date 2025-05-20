@@ -6,7 +6,7 @@
         "imageUrl": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3",
         "category": "Event",
         "uploadedBy": "CSC Admin",
-        "dateUploaded": "2025-01-15"
+        "createdAt": "2025-01-15"
     },
     {
         "sl": 2,
@@ -15,7 +15,7 @@
         "imageUrl": "https://images.unsplash.com/photo-1516321497487-e288fb19713f",
         "category": "Workshop",
         "uploadedBy": "Jane Doe",
-        "dateUploaded": "2025-02-01"
+        "createdAt": "2025-02-01"
     },
     {
         "sl": 3,
@@ -24,7 +24,7 @@
         "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXjslOWlBWtKoJseUc_zJ6xWbjZl_3lQrsiw&s",
         "category": "Event",
         "uploadedBy": "CSC Admin",
-        "dateUploaded": "2025-02-12"
+        "createdAt": "2025-02-12"
     },
     {
         "sl": 4,
@@ -33,7 +33,7 @@
         "imageUrl": "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
         "category": "Workshop",
         "uploadedBy": "John Smith",
-        "dateUploaded": "2025-03-05"
+        "createdAt": "2025-03-05"
     },
     {
         "sl": 5,
@@ -42,7 +42,7 @@
         "imageUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97",
         "category": "Resource",
         "uploadedBy": "CSC Admin",
-        "dateUploaded": "2025-01-20"
+        "createdAt": "2025-01-20"
     },
     {
         "sl": 6,
@@ -51,7 +51,7 @@
         "imageUrl": "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f",
         "category": "Event",
         "uploadedBy": "Alice Brown",
-        "dateUploaded": "2025-03-15"
+        "createdAt": "2025-03-15"
     },
     {
         "sl": 7,
@@ -60,7 +60,7 @@
         "imageUrl": "https://images.unsplash.com/photo-1542751371-adc38448a05e",
         "category": "Event",
         "uploadedBy": "CSC Admin",
-        "dateUploaded": "2025-04-01"
+        "createdAt": "2025-04-01"
     },
     {
         "sl": 8,
@@ -69,7 +69,7 @@
         "imageUrl": "https://www.advantagepro.in/wp-content/uploads/2020/11/bigdata.jpg",
         "category": "Workshop",
         "uploadedBy": "Sophie Clark",
-        "dateUploaded": "2025-04-08"
+        "createdAt": "2025-04-08"
     },
     {
         "sl": 9,
@@ -78,7 +78,7 @@
         "imageUrl": "https://images.unsplash.com/photo-1523240795612-9a054b0db644",
         "category": "Program",
         "uploadedBy": "CSC Admin",
-        "dateUploaded": "2025-02-20"
+        "createdAt": "2025-02-20"
     },
     {
         "sl": 10,
@@ -87,7 +87,7 @@
         "imageUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa",
         "category": "Workshop",
         "uploadedBy": "Michael Lee",
-        "dateUploaded": "2025-03-25"
+        "createdAt": "2025-03-25"
     },
     {
         "sl": 11,
@@ -96,7 +96,7 @@
         "imageUrl": "https://images.unsplash.com/photo-1516321497487-e288fb19713f",
         "category": "Event",
         "uploadedBy": "CSC Admin",
-        "dateUploaded": "2025-04-20"
+        "createdAt": "2025-04-20"
     },
     {
         "sl": 12,
@@ -105,7 +105,7 @@
         "imageUrl": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3",
         "category": "Resource",
         "uploadedBy": "Sarah Davis",
-        "dateUploaded": "2025-01-30"
+        "createdAt": "2025-01-30"
     },
     {
         "sl": 13,
@@ -114,7 +114,7 @@
         "imageUrl": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3",
         "category": "Workshop",
         "uploadedBy": "David Kim",
-        "dateUploaded": "2025-04-05"
+        "createdAt": "2025-04-05"
     },
     {
         "sl": 14,
@@ -123,7 +123,7 @@
         "imageUrl": "https://images.unsplash.com/photo-1524178232363-1fb2b075b655",
         "category": "Program",
         "uploadedBy": "CSC Admin",
-        "dateUploaded": "2025-02-15"
+        "createdAt": "2025-02-15"
     },
     {
         "sl": 15,
@@ -132,7 +132,7 @@
         "imageUrl": "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d",
         "category": "Event",
         "uploadedBy": "Liam Carter",
-        "dateUploaded": "2025-03-10"
+        "createdAt": "2025-03-10"
     },
     {
         "sl": 16,
@@ -141,6 +141,6 @@
         "imageUrl": "https://images.unsplash.com/photo-1499750310107-5fef28a66643",
         "category": "Resource",
         "uploadedBy": "CSC Admin",
-        "dateUploaded": "2025-01-10"
+        "createdAt": "2025-01-10"
     }
 ]

@@ -5,20 +5,16 @@ const CreateEvent = () => {
         eventName: '',
         eventImageUrl: '',
         eventDate: '',
-        eventDay: '',
         eventDescription: '',
         location: '',
         time: '',
-        presentedTime: ''
+        presentedTime: '',
+        createdDate: new Date().toISOString(),
+        uploadedBy: 'Sharif Ahmad Huyen'
     });
 
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState('');
-
-    const daysOfWeek = [
-        'Monday', 'Tuesday', 'Wednesday',
-        'Thursday', 'Friday', 'Saturday', 'Sunday'
-    ];
 
     const presentedTimeOptions = [
         '09:00 AM', '09:30 AM', '10:00 AM',
@@ -41,29 +37,44 @@ const CreateEvent = () => {
         setMessage('');
 
         try {
-            const response = await fetch('https://your-api-endpoint.com/events', {
+            // Calculate the day from the eventDate
+            const dateObj = new Date(eventData.eventDate);
+            const eventDay = dateObj.toLocaleDateString('en-US', { weekday: 'long' });
+
+            const eventWithDay = {
+                ...eventData,
+                eventDay // dynamically added
+            };
+
+            const response = await fetch('http://localhost:5000/event', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(eventData),
+                body: JSON.stringify(eventWithDay),
             });
 
-            if (!response.ok) throw new Error('Failed to create event');
-
             const result = await response.json();
+
+            if (!response.ok) {
+                throw new Error(result?.message || 'Failed to create event');
+            }
+
             setMessage('✅ Event created successfully!');
+
+            // Reset form
             setEventData({
                 eventName: '',
                 eventImageUrl: '',
                 eventDate: '',
-                eventDay: '',
                 eventDescription: '',
                 location: '',
                 time: '',
-                presentedTime: ''
+                presentedTime: '',
+                createdDate: new Date().toISOString(),
+                uploadedBy: 'Sharif Ahmad Huyen'
             });
         } catch (err) {
-            console.error(err);
-            setMessage('❌ Failed to create event.');
+            console.error('Server Error:', err.message);
+            setMessage(`❌ Failed to create event. ${err.message}`);
         } finally {
             setLoading(false);
         }
@@ -112,17 +123,29 @@ const CreateEvent = () => {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700">Day *</label>
-                        <select
-                            name="eventDay"
-                            value={eventData.eventDay}
+                        <label className="block text-sm font-medium text-gray-700">Time *</label>
+                        <input
+                            type="text"
+                            name="time"
+                            value={eventData.time}
                             onChange={handleChange}
+                            placeholder="e.g., 10:00 AM - 6:00 PM"
                             required
                             className="w-full mt-1 p-2 border rounded-md"
+                        />
+                    </div>
+
+                    <div className="md:col-span-2">
+                        <label className="block text-sm font-medium text-gray-700">Presented Time (optional)</label>
+                        <select
+                            name="presentedTime"
+                            value={eventData.presentedTime}
+                            onChange={handleChange}
+                            className="w-full mt-1 p-2 border rounded-md"
                         >
-                            <option value="" disabled>Select Day</option>
-                            {daysOfWeek.map(day => (
-                                <option key={day} value={day}>{day}</option>
+                            <option value="">-- Optional --</option>
+                            {presentedTimeOptions.map((time, idx) => (
+                                <option key={idx} value={time}>{time}</option>
                             ))}
                         </select>
                     </div>
@@ -137,34 +160,6 @@ const CreateEvent = () => {
                             required
                             className="w-full mt-1 p-2 border rounded-md"
                         />
-                    </div>
-
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700">Time *</label>
-                        <input
-                            type="text"
-                            name="time"
-                            value={eventData.time}
-                            onChange={handleChange}
-                            placeholder="e.g., 10:00 AM - 6:00 PM"
-                            required
-                            className="w-full mt-1 p-2 border rounded-md"
-                        />
-                    </div>
-
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700">Presented Time (optional)</label>
-                        <select
-                            name="presentedTime"
-                            value={eventData.presentedTime}
-                            onChange={handleChange}
-                            className="w-full mt-1 p-2 border rounded-md"
-                        >
-                            <option value="">-- Optional --</option>
-                            {presentedTimeOptions.map((time, idx) => (
-                                <option key={idx} value={time}>{time}</option>
-                            ))}
-                        </select>
                     </div>
 
                     <div className="md:col-span-2">

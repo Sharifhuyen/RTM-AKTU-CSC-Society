@@ -7,7 +7,9 @@
     "eventDescription": "CodeSprint Challenge marks the start of the CSC Society’s event calendar with an exhilarating coding competition that pushes participants to their limits. This event unites students from diverse academic backgrounds to tackle intricate programming problems in a fast-paced environment. Competitors will engage in tasks ranging from algorithmic puzzles to full-stack development, with categories tailored to various skill levels. Industry experts will judge the event, offering feedback and sharing insights on tech careers. The event also features workshops on competitive programming techniques and a networking session with local tech companies, providing a platform for students to explore job opportunities. The vibrant atmosphere, filled with live coding demos and exciting prizes, fosters creativity and collaboration. CodeSprint Challenge is more than a competition; it’s a celebration of innovation and problem-solving, setting the stage for a year of impactful CSC Society events that inspire and educate.",
     "location": "CSE Convention Room, RTM Al-Kabir Technical University, TB Gate, Sylhet",
     "time": "10:00 AM - 5:00 PM",
-    "presentedTime": "10:30 AM"
+    "presentedTime": "10:30 AM",
+    "createdDate": "2025-05-19T13:43:00.783Z",
+    "uploadedBy": "Sharif Ahmad Huyen"
   },
   {
     "eventName": "Machine Learning Workshop",
@@ -17,7 +19,9 @@
     "eventDescription": "The Machine Learning Workshop is a comprehensive event designed to introduce students to the fundamentals of machine learning and its applications. Participants will explore algorithms like regression, classification, and clustering using Python libraries such as scikit-learn and TensorFlow. Hands-on labs guide attendees through building models, from data preprocessing to evaluation, under the supervision of experienced instructors. The workshop also covers real-world use cases in fields like healthcare, finance, and e-commerce, highlighting the transformative power of ML. Guest speakers from academia and industry will discuss career paths and emerging trends like generative AI. A collaborative project allows participants to apply their skills to a practical problem, fostering teamwork and innovation. This event is ideal for beginners and intermediate learners, offering a supportive environment to ask questions and gain confidence. Attendees will leave with practical knowledge, resources, and connections to pursue machine learning further.",
     "location": "CSE Convention Room, RTM Al-Kabir Technical University, TB Gate, Sylhet",
     "time": "9:00 AM - 4:00 PM",
-    "presentedTime": "9:30 AM"
+    "presentedTime": "9:30 AM",
+    "createdDate": "2025-05-19T13:43:00.783Z",
+    "uploadedBy": "Sharif Ahmad Huyen"
   },
   {
     "eventName": "Frontend Fiesta",
@@ -27,7 +31,9 @@
     "eventDescription": "Frontend Fiesta is a vibrant event celebrating the art and science of front-end web development. Participants will dive into modern tools like React, Tailwind CSS, and TypeScript, building responsive and user-friendly interfaces from scratch. Guided by seasoned developers, attendees will work on projects that emphasize accessibility, performance, and design principles. The event includes workshops on UI/UX trends and a guest talk by a front-end architect sharing insights on building scalable web applications. A showcase at the end allows participants to present their creations, receiving feedback from peers and mentors. The collaborative atmosphere encourages creativity, with group activities fostering teamwork and innovation. Frontend Fiesta is perfect for students looking to enhance their web development skills or start a career in front-end engineering. Expect a dynamic day of coding, learning, and networking, with plenty of inspiration to create visually stunning and functional web experiences.",
     "location": "CSE Convention Room, RTM Al-Kabir Technical University, TB Gate, Sylhet",
     "time": "10:00 AM - 6:00 PM",
-    "presentedTime": "10:15 AM"
+    "presentedTime": "10:15 AM",
+    "createdDate": "2025-05-19T13:43:00.783Z",
+    "uploadedBy": "Sharif Ahmad Huyen"
   },
   {
     "eventName": "Network Security Seminar",
@@ -37,17 +43,21 @@
     "eventDescription": "The Network Security Seminar is an essential event for students interested in safeguarding digital infrastructure. This seminar covers critical topics like firewalls, intrusion detection systems, and VPNs, with hands-on labs simulating real-world network attacks. Participants will learn how to secure networks, detect vulnerabilities, and respond to cyber threats, guided by cybersecurity professionals. The event also explores emerging challenges like zero-trust architecture and cloud security, preparing attendees for modern IT environments. A guest panel of industry experts will discuss certifications like CompTIA Security+ and career opportunities in network security. The seminar includes a mini-hackathon where teams compete to secure a virtual network, adding a fun and competitive element. The collaborative environment encourages knowledge-sharing and networking with peers and professionals. Attendees will gain practical skills and a deeper understanding of network security, making this seminar a stepping stone for a career in cybersecurity.",
     "location": "CSE Convention Room, RTM Al-Kabir Technical University, TB Gate, Sylhet",
     "time": "9:30 AM - 4:30 PM",
-    "presentedTime": "10:00 AM"
+    "presentedTime": "10:00 AM",
+    "createdDate": "2025-05-19T13:43:00.783Z",
+    "uploadedBy": "Sharif Ahmad Huyen"
   },
   {
     "eventName": "Big Data Analytics Bootcamp",
-    "eventImageUrl": "https://www.springboard.com/blog/wp-content/uploads/2024/04/data-analytics-bootcamps.jpeg",
+    "eventImageUrl": "https://www.springboard.com/blog/wp-content/uploads/2024/02/best-data-science-bootcamps-2-1.png",
     "eventDate": "2025-04-08",
     "eventDay": "Tuesday",
     "eventDescription": "The Big Data Analytics Bootcamp is an intensive event diving into the world of large-scale data processing and analysis. Participants will explore tools like Hadoop, Spark, and Kafka, learning how to handle massive datasets efficiently. Hands-on sessions cover data ingestion, transformation, and visualization, with a focus on real-world applications in business, science, and social good. Industry experts will share case studies on how big data drives decision-making in organizations. A group project challenges attendees to analyze a complex dataset and present actionable insights, fostering collaboration and critical thinking. The bootcamp is designed for students with some programming experience, offering advanced sessions for those familiar with data analytics. The supportive environment encourages questions and experimentation, making complex concepts accessible. Attendees will leave with practical skills, a project for their portfolio, and connections with data professionals, positioning them for success in the fast-growing field of big data.",
     "location": "CSE Convention Room, RTM Al-Kabir Technical University, TB Gate, Sylhet",
     "time": "10:00 AM - 5:00 PM",
-    "presentedTime": "10:30 AM"
+    "presentedTime": "10:30 AM",
+    "createdDate": "2025-05-19T13:43:00.783Z",
+    "uploadedBy": "Sharif Ahmad Huyen"
   },
   {
     "eventName": "Indie Game Dev Jam",
@@ -57,7 +67,9 @@
     "eventDescription": "Indie Game Dev Jam is a thrilling 48-hour event where students team up to create original video games. Using tools like Unity, Godot, or Phaser, participants will design and develop games based on a surprise theme revealed at the start. Mentors from the gaming industry will guide teams on game mechanics, storytelling, and asset creation, ensuring a polished final product. Workshops cover topics like sprite animation and game physics, catering to both coders and artists. The jam culminates in a showcase where teams present their games to judges for prizes in categories like creativity and gameplay. The collaborative and creative environment fosters innovation, making this event ideal for students passionate about gaming. Attendees will gain hands-on experience, a portfolio piece, and connections with like-minded peers. Indie Game Dev Jam is a celebration of creativity and technical skill, delivering an unforgettable experience.",
     "location": "CSE Convention Room, RTM Al-Kabir Technical University, TB Gate, Sylhet",
     "time": "9:00 AM - 9:00 PM",
-    "presentedTime": "9:30 AM"
+    "presentedTime": "9:30 AM",
+    "createdDate": "2025-05-19T13:43:00.783Z",
+    "uploadedBy": "Sharif Ahmad Huyen"
   },
   {
     "eventName": "Smart Contract Workshop",
@@ -67,7 +79,9 @@
     "eventDescription": "The Smart Contract Workshop introduces students to blockchain development, focusing on creating secure and efficient smart contracts. Using Ethereum and Solidity, participants will build and deploy contracts for applications like decentralized voting or token systems. Hands-on labs cover blockchain basics, gas optimization, and security best practices, guided by experienced developers. The workshop also explores the broader blockchain ecosystem, including DeFi and DAOs, highlighting career opportunities in this emerging field. A guest speaker will discuss the impact of blockchain on industries like finance and supply chain. A team project challenges attendees to design a smart contract solution, fostering collaboration and problem-solving. The event is beginner-friendly, with clear explanations and ample support. Attendees will leave with practical skills, a working smart contract, and resources to explore blockchain further. This workshop offers an engaging and accessible entry into the world of decentralized technologies, inspiring students to innovate.",
     "location": "CSE Convention Room, RTM Al-Kabir Technical University, TB Gate, Sylhet",
     "time": "10:00 AM - 4:00 PM",
-    "presentedTime": "10:15 AM"
+    "presentedTime": "10:15 AM",
+    "createdDate": "2025-05-19T13:43:00.783Z",
+    "uploadedBy": "Sharif Ahmad Huyen"
   },
   {
     "eventName": "Smart Cities Hackathon",
@@ -77,7 +91,9 @@
     "eventDescription": "The Smart Cities Hackathon challenges students to develop IoT-based solutions for urban challenges like traffic management, energy efficiency, and public safety. Using hardware like Raspberry Pi and sensors, teams will prototype devices integrated with cloud platforms for real-time data analysis. Mentors will guide participants through IoT architecture, MQTT protocols, and secure data transmission. The hackathon includes workshops on IoT frameworks and a talk by a smart city consultant on global trends. Teams will present their prototypes to a panel of judges, competing for prizes in innovation and impact. The collaborative environment encourages creativity and interdisciplinary teamwork, making this event ideal for students interested in technology and urban planning. Attendees will gain hands-on experience, a functional prototype, and connections with IoT professionals. The Smart Cities Hackathon is a dynamic platform to explore how technology can transform cities, inspiring students to innovate for a sustainable future.",
     "location": "CSE Convention Room, RTM Al-Kabir Technical University, TB Gate, Sylhet",
     "time": "9:30 AM - 5:30 PM",
-    "presentedTime": "10:00 AM"
+    "presentedTime": "10:00 AM",
+    "createdDate": "2025-05-19T13:43:00.783Z",
+    "uploadedBy": "Sharif Ahmad Huyen"
   },
   {
     "eventName": "Serverless Computing Lab",
@@ -87,7 +103,9 @@
     "eventDescription": "The Serverless Computing Lab is a hands-on event introducing students to the world of serverless architecture. Participants will build scalable applications using AWS Lambda, Azure Functions, and Google Cloud Functions, focusing on event-driven programming and cost optimization. Labs cover API development, database integration, and monitoring, guided by cloud experts. A guest speaker will discuss the advantages of serverless in modern DevOps and its role in startups. A group project challenges attendees to create a serverless application, such as a chatbot or data pipeline, fostering collaboration and practical learning. The event is designed for students with basic programming knowledge, offering clear explanations and support. Attendees will leave with a working serverless app, a roadmap for cloud certifications, and connections with professionals. The Serverless Computing Lab provides an accessible entry into cloud computing, equipping students with skills for the future of application development in a dynamic and engaging setting.",
     "location": "CSE Convention Room, RTM Al-Kabir Technical University, TB Gate, Sylhet",
     "time": "10:00 AM - 5:00 PM",
-    "presentedTime": "10:30 AM"
+    "presentedTime": "10:30 AM",
+    "createdDate": "2025-05-19T13:43:00.783Z",
+    "uploadedBy": "Sharif Ahmad Huyen"
   },
   {
     "eventName": "Immersive Tech Expo",
@@ -97,7 +115,9 @@
     "eventDescription": "The Immersive Tech Expo is a showcase of augmented and virtual reality technologies, offering students a chance to explore AR/VR development. Using tools like Unity and ARCore, participants will create interactive experiences, from virtual galleries to training simulations. Workshops cover 3D modeling, spatial computing, and user interaction, guided by AR/VR developers. The expo features demos of industry applications in education, healthcare, and entertainment, highlighting the potential of immersive tech. A student showcase allows attendees to present their projects, receiving feedback from experts. A guest talk by an AR/VR innovator will discuss market trends and career paths. The collaborative environment fosters creativity, making this event ideal for students interested in cutting-edge technologies. Attendees will gain hands-on experience, a portfolio piece, and connections with peers and professionals. The Immersive Tech Expo is an inspiring platform to dive into the future of AR/VR innovation.",
     "location": "CSE Convention Room, RTM Al-Kabir Technical University, TB Gate, Sylhet",
     "time": "9:00 AM - 4:00 PM",
-    "presentedTime": "9:30 AM"
+    "presentedTime": "9:30 AM",
+    "createdDate": "2025-05-19T13:43:00.783Z",
+    "uploadedBy": "Sharif Ahmad Huyen"
   },
   {
     "eventName": "Penetration Testing Bootcamp",
@@ -107,7 +127,9 @@
     "eventDescription": "The Penetration Testing Bootcamp is an intensive event teaching students the art of ethical hacking. Participants will learn to identify vulnerabilities, exploit systems, and secure applications using tools like Metasploit and Burp Suite. Hands-on labs simulate real-world scenarios, from web app attacks to network breaches, guided by cybersecurity experts. The bootcamp covers reconnaissance, exploitation, and reporting, preparing attendees for certifications like CEH. A capture-the-flag challenge adds a competitive edge, with teams racing to hack virtual systems. A guest speaker will discuss the role of pen testers in corporate security and emerging threats like ransomware. The collaborative environment encourages knowledge-sharing and networking. Attendees will leave with practical skills, a penetration testing toolkit, and connections with security professionals. The Penetration Testing Bootcamp is a critical step for students aiming for a cybersecurity career, offering an engaging and challenging experience in a supportive setting.",
     "location": "CSE Convention Room, RTM Al-Kabir Technical University, TB Gate, Sylhet",
     "time": "10:00 AM - 6:00 PM",
-    "presentedTime": "10:15 AM"
+    "presentedTime": "10:15 AM",
+    "createdDate": "2025-05-19T13:43:00.783Z",
+    "uploadedBy": "Sharif Ahmad Huyen"
   },
   {
     "eventName": "Quantum Programming Lab",
@@ -117,17 +139,21 @@
     "eventDescription": "The Quantum Programming Lab introduces students to quantum computing through practical exploration. Using Qiskit and Cirq, participants will build quantum circuits and experiment with algorithms like Grover’s and Shor’s. Hands-on labs cover qubits, superposition, and entanglement, making complex concepts accessible to beginners. A guest speaker from a quantum research lab will discuss applications in cryptography, optimization, and materials science. The lab includes a team project where attendees design a quantum algorithm, fostering collaboration and creativity. The event is designed for students with basic programming knowledge, offering clear explanations and mentor support. Attendees will leave with a working quantum program, resources for further learning, and connections with quantum enthusiasts. The collaborative environment encourages curiosity and experimentation, making this lab an ideal starting point for exploring quantum technologies. The Quantum Programming Lab is an inspiring opportunity to engage with a transformative field shaping the future of computing.",
     "location": "CSE Convention Room, RTM Al-Kabir Technical University, TB Gate, Sylhet",
     "time": "9:30 AM - 4:30 PM",
-    "presentedTime": "10:00 AM"
+    "presentedTime": "10:00 AM",
+    "createdDate": "2025-05-19T13:43:00.783Z",
+    "uploadedBy": "Sharif Ahmad Huyen"
   },
   {
     "eventName": "Tech Industry Connect",
     "eventImageUrl": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3",
     "eventDate": "2025-12-10",
     "eventDay": "Wednesday",
-    "eventDescription": "Tech Industry Connect is a flagship event bridging students with leading tech companies and startups. This career-focused event features booths from employers offering internships, jobs, and mentorship opportunities. Attendees can participate in resume reviews, mock interviews, and panels on tech career paths, gaining insights from industry leaders. Companies will showcase their technologies, from AI to cloud solutions, giving students a glimpse into real-world projects. A pitch competition allows participants to present innovative ideas to recruiters, fostering creativity and confidence. TheCollaborative atmosphere encourages meaningful connections with alumni, professionals, and peers. The event is ideal for students at any stage, from freshmen exploring options to seniors seeking employment. Attendees will leave with job leads, polished resumes, and a clearer career roadmap. Tech Industry Connect is a dynamic platform to launch or advance a tech career, offering inspiration and opportunities in a vibrant, engaging setting.",
+    "eventDescription": "Tech Industry Connect is a flagship event bridging students with leading tech companies and startups. This career-focused event features booths from employers offering internships, jobs, and mentorship opportunities. Attendees can participate in resume reviews, mock interviews, and panels on tech career paths, gaining insights from industry leaders. Companies will showcase their technologies, from AI to cloud solutions, giving students a glimpse into real-world projects. A pitch competition allows participants to present innovative ideas to recruiters, fostering creativity and confidence. The collaborative atmosphere encourages meaningful connections with alumni, professionals, and peers. The event is ideal for students at any stage, from freshmen exploring options to seniors seeking employment. Attendees will leave with job leads, polished resumes, and a clearer career roadmap. Tech Industry Connect is a dynamic platform to launch or advance a tech career, offering inspiration and opportunities in a vibrant, engaging setting.",
     "location": "CSE Convention Room, RTM Al-Kabir Technical University, TB Gate, Sylhet",
     "time": "10:00 AM - 5:00 PM",
-    "presentedTime": "10:30 AM"
+    "presentedTime": "10:30 AM",
+    "createdDate": "2025-05-19T13:43:00.783Z",
+    "uploadedBy": "Sharif Ahmad Huyen"
   },
   {
     "eventName": "Cross-Platform App Dev",
@@ -137,7 +163,9 @@
     "eventDescription": "Cross-Platform App Dev is a hands-on workshop teaching students to build apps for iOS and Android using Flutter and React Native. Participants will create a fully functional app, from UI design to backend integration, guided by mobile development experts. Workshops cover state management, performance optimization, and app store deployment, ensuring practical skills. A guest speaker will discuss monetization strategies and the mobile app market. A team project challenges attendees to develop an app solving a real-world problem, fostering collaboration and innovation. The event is beginner-friendly, with mentors providing personalized support. Attendees will leave with a working app, a portfolio piece, and resources to continue mobile development. The collaborative environment encourages creativity and networking with peers and professionals. Cross-Platform App Dev is an engaging opportunity to dive into mobile development, equipping students with skills for a thriving industry in a supportive and dynamic setting.",
     "location": "CSE Convention Room, RTM Al-Kabir Technical University, TB Gate, Sylhet",
     "time": "9:00 AM - 5:00 PM",
-    "presentedTime": "9:30 AM"
+    "presentedTime": "9:30 AM",
+    "createdDate": "2025-05-19T13:43:00.783Z",
+    "uploadedBy": "Sharif Ahmad Huyen"
   },
   {
     "eventName": "Autonomous Robotics Challenge",
@@ -147,7 +175,9 @@
     "eventDescription": "The Autonomous Robotics Challenge is a thrilling competition where students design and program robots to perform autonomous tasks. Using platforms like ROS and Arduino, teams will build robots for challenges like maze navigation, object detection, and delivery. Mentors will guide participants through sensor integration, path planning, and AI for robotics. Workshops cover computer vision and control systems, providing practical skills. A guest speaker from a robotics startup will discuss industry trends and career paths. The competition culminates in a showcase where robots compete for prizes in performance and innovation. The collaborative environment fosters teamwork and creativity, making this event ideal for students interested in robotics and AI. Attendees will gain hands-on experience, a functional robot, and connections with professionals. The Autonomous Robotics Challenge is a dynamic platform to explore cutting-edge technology, inspiring students to innovate in the exciting field of robotics.",
     "location": "CSE Convention Room, RTM Al-Kabir Technical University, TB Gate, Sylhet",
     "time": "10:00 AM - 6:00 PM",
-    "presentedTime": "10:15 AM"
+    "presentedTime": "10:15 AM",
+    "createdDate": "2025-05-19T13:43:00.783Z",
+    "uploadedBy": "Sharif Ahmad Huyen"
   },
   {
     "eventName": "GitHub Contribution Sprint",
@@ -157,6 +187,8 @@
     "eventDescription": "The GitHub Contribution Sprint is a collaborative event where students contribute to open-source projects on GitHub. Participants will work on issues like bug fixes, feature additions, or documentation for real-world repositories, guided by open-source mentors. Workshops cover Git workflows, pull requests, and CI/CD pipelines, ensuring practical skills. A guest speaker will discuss the impact of open source on careers and innovation. Teams will compete to make impactful contributions, with prizes for quality and collaboration. The event is beginner-friendly, with support for navigating open-source communities. Attendees will leave with GitHub contributions, a stronger portfolio, and connections with global developers. The collaborative environment fosters learning and networking, making this sprint ideal for students eager to engage with open source. The GitHub Contribution Sprint is an inspiring opportunity to contribute to meaningful projects, equipping students with skills and confidence in a dynamic, community-driven setting.",
     "location": "CSE Convention Room, RTM Al-Kabir Technical University, TB Gate, Sylhet",
     "time": "9:00 AM - 9:00 PM",
-    "presentedTime": "9:30 AM"
+    "presentedTime": "9:30 AM",
+    "createdDate": "2025-05-19T13:43:00.783Z",
+    "uploadedBy": "Sharif Ahmad Huyen"
   }
 ]
