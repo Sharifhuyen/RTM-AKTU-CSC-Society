@@ -1,7 +1,13 @@
-
 import React, { useState, useEffect } from "react";
 import { Editor } from "@tinymce/tinymce-react";
-import { FaHeading, FaImage, FaPen, FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import {
+    FaHeading,
+    FaImage,
+    FaPen,
+    FaCheckCircle,
+    FaTimesCircle,
+    FaTags,
+} from "react-icons/fa";
 
 const FloatingAlert = ({ type, message }) => {
     if (!message) return null;
@@ -34,19 +40,27 @@ const WarningModal = ({ onContinue, onCancel }) => (
 const UpdateBlog = ({ blogId, initialData }) => {
     const [title, setTitle] = useState(initialData?.title || "");
     const [image, setImage] = useState(null);
+    const [previewImage, setPreviewImage] = useState(initialData?.imageUrl || "");
     const [content, setContent] = useState(initialData?.content || "");
+    const [tag, setTag] = useState(initialData?.tag || "");
+    const [tags, setTags] = useState([]);
     const [alert, setAlert] = useState({ type: "", message: "" });
     const [showEditor, setShowEditor] = useState(true);
     const [showModal, setShowModal] = useState(false);
-    const [hasConfirmed, setHasConfirmed] = useState(true); // assume confirmed in update mode
+    const [hasConfirmed, setHasConfirmed] = useState(true); // Assume true for editing
 
     useEffect(() => {
-        // Optional: fetch blog details if not passed via props
-        // Example:
-        // fetch(`/api/blogs/${blogId}`).then(...).then(data => { setTitle(data.title) ... });
-    }, [blogId]);
+        fetch("/api/tags")
+            .then((res) => res.json())
+            .then((data) => setTags(data))
+            .catch(() => showAlert("error", "Failed to load tags."));
+    }, []);
 
-    const handleImageUpload = (e) => setImage(e.target.files[0]);
+    const handleImageUpload = (e) => {
+        const file = e.target.files[0];
+        setImage(file);
+        setPreviewImage(URL.createObjectURL(file));
+    };
 
     const showAlert = (type, message) => {
         setAlert({ type, message });
@@ -55,13 +69,14 @@ const UpdateBlog = ({ blogId, initialData }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         const parser = new DOMParser();
         const doc = parser.parseFromString(content, "text/html");
         const textOnly = doc.body.textContent || "";
         const wordCount = textOnly.trim().split(/\s+/).filter(Boolean).length;
 
-        if (!title.trim() || textOnly.trim().length === 0) {
-            showAlert("error", "Title and content are required.");
+        if (!title.trim() || !tag || textOnly.trim().length === 0) {
+            showAlert("error", "Title, tag, and content are required.");
             return;
         }
 
@@ -74,6 +89,7 @@ const UpdateBlog = ({ blogId, initialData }) => {
             const formData = new FormData();
             formData.append("title", title);
             formData.append("content", content);
+            formData.append("tag", tag);
             if (image) formData.append("image", image);
 
             const response = await fetch(`/api/blogs/${blogId}`, {
@@ -82,7 +98,6 @@ const UpdateBlog = ({ blogId, initialData }) => {
             });
 
             if (!response.ok) throw new Error("Failed to update blog.");
-
             showAlert("success", "Blog updated successfully!");
         } catch (err) {
             showAlert("error", err.message || "Update failed.");
@@ -127,6 +142,25 @@ const UpdateBlog = ({ blogId, initialData }) => {
 
                     <div>
                         <label className="block text-sm font-semibold mb-1 flex items-center gap-2">
+                            <FaTags className="text-blue-600" />
+                            Blog Tag
+                        </label>
+                        <select
+                            value={tag}
+                            onChange={(e) => setTag(e.target.value)}
+                            className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        >
+                            <option value="">Select a tag</option>
+                            {tags.map((t) => (
+                                <option key={t._id} value={t._id}>
+                                    {t.name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+
+                    <div>
+                        <label className="block text-sm font-semibold mb-1 flex items-center gap-2">
                             <FaImage className="text-blue-600" />
                             Replace Image (optional)
                         </label>
@@ -136,6 +170,13 @@ const UpdateBlog = ({ blogId, initialData }) => {
                             onChange={handleImageUpload}
                             className="block w-full text-sm text-gray-700 border border-gray-300 rounded p-2 cursor-pointer"
                         />
+                        {previewImage && (
+                            <img
+                                src={previewImage}
+                                alt="Preview"
+                                className="mt-3 w-64 rounded shadow border"
+                            />
+                        )}
                     </div>
 
                     <div>
