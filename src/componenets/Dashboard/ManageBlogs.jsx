@@ -24,7 +24,7 @@ const ManageBlogs = () => {
                 console.error("Error fetching blogs:", err);
                 showToast("Failed to fetch blogs.", "error");
             });
-    }, []);
+    }, [blogs]);
 
     const showToast = (message, type = "error") => {
         setToast({ message, type });
@@ -96,17 +96,23 @@ const ManageBlogs = () => {
     const handleUpdateSuccess = (updatedBlog) => {
         setBlogs((prevBlogs) =>
             prevBlogs.map((blog) =>
-                blog._id === updatedBlog._id ? updatedBlog : blog
+                blog._id === updatedBlog._id
+                    ? { ...blog, ...updatedBlog } // Retain other fields like `status`
+                    : blog
             )
         );
 
         // Update selectedBlog if it's the one edited
         if (selectedBlog?._id === updatedBlog._id) {
-            setSelectedBlog(updatedBlog);
+            setSelectedBlog((prev) => ({
+                ...prev,
+                ...updatedBlog
+            }));
         }
 
         showToast("Blog updated successfully.", "success");
     };
+
     return (
         <div className="max-w-7xl mx-auto px-4 py-8 relative">
 

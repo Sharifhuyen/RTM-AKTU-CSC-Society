@@ -59,15 +59,22 @@ const UpdateBlog = ({ blog, onClose, onUpdateSuccess }) => {
 
             const result = await response.json();
 
-            // ✅ Show toast and close modal
-            onUpdateSuccess(result);
-            onClose();
+            // ✅ Notify parent to rerender or refresh blog list
+            if (typeof onUpdateSuccess === "function") {
+                onUpdateSuccess(result); // Pass updated blog data if needed
+            }
+
+            // ✅ Close modal or form after success
+            if (typeof onClose === "function") {
+                onClose();
+            }
         } catch (error) {
             console.error("Update error:", error);
             setErrorMessage("An error occurred while updating the blog.");
             setShowAlert(true);
         }
     };
+
 
     useEffect(() => {
         if (showAlert) {

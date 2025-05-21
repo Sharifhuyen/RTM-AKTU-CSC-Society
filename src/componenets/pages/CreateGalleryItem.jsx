@@ -1,4 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import {
+    HiOutlinePencilSquare,
+    HiOutlineDocumentText,
+    HiOutlineLink,
+    HiOutlineTag
+} from 'react-icons/hi2';
 
 const CreateGalleryItem = () => {
     const [formData, setFormData] = useState({
@@ -12,9 +18,18 @@ const CreateGalleryItem = () => {
     const [message, setMessage] = useState('');
     const [showAlert, setShowAlert] = useState(false);
 
+    useEffect(() => {
+        if (message) {
+            const timer = setTimeout(() => {
+                setMessage('');
+            }, 4000);
+            return () => clearTimeout(timer);
+        }
+    }, [message]);
+
     const getCurrentDate = () => {
         const now = new Date();
-        return now.toISOString().split('T')[0]; // Format: YYYY-MM-DD
+        return now.toISOString().split('T')[0];
     };
 
     const handleChange = (e) => {
@@ -71,87 +86,105 @@ const CreateGalleryItem = () => {
     };
 
     return (
-        <div className="max-w-2xl mx-auto px-4 py-10">
+        <div className="max-w-3xl mx-auto px-4 py-10">
             <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Upload Gallery Item</h2>
 
             {showAlert && (
-                <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 rounded mb-4">
-                    <p className="font-semibold">Description must be more than 220 characters.</p>
+                <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 rounded-xl mb-5 shadow-sm">
+                    <p className="font-semibold">⚠️ Description must be more than 220 characters.</p>
                 </div>
             )}
 
-            <form onSubmit={handleSubmit} className="bg-white shadow-md rounded-xl p-6 space-y-5">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="md:col-span-2">
-                        <label className="block text-sm font-medium text-gray-700">Title *</label>
-                        <input
-                            type="text"
-                            name="title"
-                            placeholder="e.g. Big Data Analytics Workshop"
-                            value={formData.title}
-                            onChange={handleChange}
-                            required
-                            className="w-full mt-1 p-2 border rounded-md"
-                        />
-                    </div>
+            <form onSubmit={handleSubmit} className="bg-white shadow-xl rounded-2xl p-6 space-y-6">
 
-                    <div className="md:col-span-2">
-                        <label className="block text-sm font-medium text-gray-700">Description *</label>
-                        <textarea
-                            name="description"
-                            placeholder="Description must be more than 220 characters"
-                            value={formData.description}
-                            onChange={handleChange}
-                            required
-                            className="w-full mt-1 p-2 border rounded-md min-h-[120px]"
-                        />
-                    </div>
-
-                    <div className="md:col-span-2">
-                        <label className="block text-sm font-medium text-gray-700">Image URL *</label>
-                        <input
-                            type="url"
-                            name="imageUrl"
-                            placeholder="https://example.com/image.jpg"
-                            value={formData.imageUrl}
-                            onChange={handleChange}
-                            required
-                            className="w-full mt-1 p-2 border rounded-md"
-                        />
-                    </div>
-
-                    <div className="md:col-span-2">
-                        <label className="block text-sm font-medium text-gray-700">Category *</label>
-                        <select
-                            name="category"
-                            value={formData.category}
-                            onChange={handleChange}
-                            required
-                            className="w-full mt-1 p-2 border rounded-md"
-                        >
-                            <option value="" disabled>Select category</option>
-                            <option value="Event">Event</option>
-                            <option value="Workshop">Workshop</option>
-                            <option value="Resource">Resource</option>
-                            <option value="Program">Program</option>
-                        </select>
-                    </div>
+                {/* Title */}
+                <div>
+                    <label className="flex items-center gap-2 text-blue-700 font-bold mb-1 text-sm">
+                        <HiOutlinePencilSquare className="text-blue-700 text-lg" />
+                        Title *
+                    </label>
+                    <input
+                        type="text"
+                        name="title"
+                        placeholder="e.g. Big Data Analytics Workshop"
+                        value={formData.title}
+                        onChange={handleChange}
+                        required
+                        className="w-full p-3 border border-blue-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
                 </div>
 
+                {/* Description */}
+                <div>
+                    <label className="flex items-center gap-2 text-blue-700 font-bold mb-1 text-sm">
+                        <HiOutlineDocumentText className="text-blue-700 text-lg" />
+                        Description *
+                    </label>
+                    <textarea
+                        name="description"
+                        placeholder="Description must be more than 220 characters"
+                        value={formData.description}
+                        onChange={handleChange}
+                        required
+                        className="w-full p-3 border border-blue-700 rounded-xl min-h-[120px] focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                </div>
+
+                {/* Image URL */}
+                <div>
+                    <label className="flex items-center gap-2 text-blue-700 font-bold mb-1 text-sm">
+                        <HiOutlineLink className="text-blue-700 text-lg" />
+                        Image URL *
+                    </label>
+                    <input
+                        type="url"
+                        name="imageUrl"
+                        placeholder="https://example.com/image.jpg"
+                        value={formData.imageUrl}
+                        onChange={handleChange}
+                        required
+                        className="w-full p-3 border border-blue-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                </div>
+
+                {/* Category */}
+                <div>
+                    <label className="flex items-center gap-2 text-blue-700 font-bold mb-1 text-sm">
+                        <HiOutlineTag className="text-blue-700 text-lg" />
+                        Category *
+                    </label>
+                    <select
+                        name="category"
+                        value={formData.category}
+                        onChange={handleChange}
+                        required
+                        className="w-full p-3 border border-blue-700 rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    >
+                        <option value="" disabled>Select category</option>
+                        <option value="Event">Event</option>
+                        <option value="Workshop">Workshop</option>
+                        <option value="Resource">Resource</option>
+                        <option value="Program">Program</option>
+                    </select>
+                </div>
+
+                {/* Submit Button */}
                 <button
                     type="submit"
                     disabled={loading}
-                    className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition"
+                    className="w-full bg-blue-600 text-white font-semibold py-3 rounded-xl hover:bg-blue-700 transition-all duration-300 disabled:opacity-60"
                 >
                     {loading ? 'Uploading...' : 'Upload Item'}
                 </button>
-
-                {message && (
-                    <div className={`text-center mt-4 ${message.includes('successfully') ? 'text-green-600' : 'text-red-600'}`}>
-                        {message}
-                    </div>
-                )}
             </form>
+
+            {/* Toast Message */}
+            {message && (
+                <div className={`fixed bottom-6 right-6 px-4 py-3 rounded-xl shadow-lg text-white text-sm font-medium transition-all duration-300 ${message.includes('✅') ? 'bg-green-600' : 'bg-red-600'
+                    }`}>
+                    {message}
+                </div>
+            )}
         </div>
     );
 };

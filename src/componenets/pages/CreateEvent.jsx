@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { FaImage, FaCalendarAlt, FaClock, FaMapMarkerAlt, FaHeading, FaAlignLeft } from 'react-icons/fa';
 
 const CreateEvent = () => {
     const [eventData, setEventData] = useState({
@@ -37,13 +38,12 @@ const CreateEvent = () => {
         setMessage('');
 
         try {
-            // Calculate the day from the eventDate
             const dateObj = new Date(eventData.eventDate);
             const eventDay = dateObj.toLocaleDateString('en-US', { weekday: 'long' });
 
             const eventWithDay = {
                 ...eventData,
-                eventDay // dynamically added
+                eventDay
             };
 
             const response = await fetch('http://localhost:5000/event', {
@@ -59,8 +59,6 @@ const CreateEvent = () => {
             }
 
             setMessage('✅ Event created successfully!');
-
-            // Reset form
             setEventData({
                 eventName: '',
                 eventImageUrl: '',
@@ -87,43 +85,53 @@ const CreateEvent = () => {
             <form onSubmit={handleSubmit} className="space-y-6 bg-white shadow-lg rounded-xl p-6">
                 <div className="grid gap-4 md:grid-cols-2">
                     <div>
-                        <label className="block text-sm font-medium text-gray-700">Event Name *</label>
+                        <label className="flex items-center text-sm font-bold text-blue-700">
+                            <FaHeading className="mr-1" /> Event Name *
+                        </label>
                         <input
                             type="text"
                             name="eventName"
                             value={eventData.eventName}
                             onChange={handleChange}
+                            placeholder="Enter event name"
                             required
-                            className="w-full mt-1 p-2 border rounded-md"
+                            className="w-full mt-1 p-2 border border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:border-blue-700 rounded-md placeholder-blue-400"
                         />
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700">Image URL *</label>
+                        <label className="flex items-center text-sm font-bold text-blue-700">
+                            <FaImage className="mr-1" /> Image URL *
+                        </label>
                         <input
                             type="url"
                             name="eventImageUrl"
                             value={eventData.eventImageUrl}
                             onChange={handleChange}
+                            placeholder="Enter image URL"
                             required
-                            className="w-full mt-1 p-2 border rounded-md"
+                            className="w-full mt-1 p-2 border border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:border-blue-700 rounded-md placeholder-blue-400"
                         />
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700">Date *</label>
+                        <label className="flex items-center text-sm font-bold text-blue-700">
+                            <FaCalendarAlt className="mr-1" /> Date *
+                        </label>
                         <input
                             type="date"
                             name="eventDate"
                             value={eventData.eventDate}
                             onChange={handleChange}
                             required
-                            className="w-full mt-1 p-2 border rounded-md"
+                            className="w-full mt-1 p-2 border border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:border-blue-700 rounded-md"
                         />
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700">Time *</label>
+                        <label className="flex items-center text-sm font-bold text-blue-700">
+                            <FaClock className="mr-1" /> Time *
+                        </label>
                         <input
                             type="text"
                             name="time"
@@ -131,17 +139,19 @@ const CreateEvent = () => {
                             onChange={handleChange}
                             placeholder="e.g., 10:00 AM - 6:00 PM"
                             required
-                            className="w-full mt-1 p-2 border rounded-md"
+                            className="w-full mt-1 p-2 border border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:border-blue-700 rounded-md placeholder-blue-400"
                         />
                     </div>
 
                     <div className="md:col-span-2">
-                        <label className="block text-sm font-medium text-gray-700">Presented Time (optional)</label>
+                        <label className="flex items-center text-sm font-bold text-blue-700">
+                            <FaClock className="mr-1" /> Presented Time (optional)
+                        </label>
                         <select
                             name="presentedTime"
                             value={eventData.presentedTime}
                             onChange={handleChange}
-                            className="w-full mt-1 p-2 border rounded-md"
+                            className="w-full mt-1 p-2 border border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:border-blue-700 rounded-md"
                         >
                             <option value="">-- Optional --</option>
                             {presentedTimeOptions.map((time, idx) => (
@@ -151,26 +161,32 @@ const CreateEvent = () => {
                     </div>
 
                     <div className="md:col-span-2">
-                        <label className="block text-sm font-medium text-gray-700">Location *</label>
+                        <label className="flex items-center text-sm font-bold text-blue-700">
+                            <FaMapMarkerAlt className="mr-1" /> Location *
+                        </label>
                         <input
                             type="text"
                             name="location"
                             value={eventData.location}
                             onChange={handleChange}
+                            placeholder="Enter event location"
                             required
-                            className="w-full mt-1 p-2 border rounded-md"
+                            className="w-full mt-1 p-2 border border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:border-blue-700 rounded-md placeholder-blue-400"
                         />
                     </div>
 
                     <div className="md:col-span-2">
-                        <label className="block text-sm font-medium text-gray-700">Description *</label>
+                        <label className="flex items-center text-sm font-bold text-blue-700">
+                            <FaAlignLeft className="mr-1" /> Description *
+                        </label>
                         <textarea
                             name="eventDescription"
                             value={eventData.eventDescription}
                             onChange={handleChange}
+                            placeholder="Enter event description"
                             rows="5"
                             required
-                            className="w-full mt-1 p-2 border rounded-md"
+                            className="w-full mt-1 p-2 border border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:border-blue-700 rounded-md placeholder-blue-400"
                         ></textarea>
                     </div>
                 </div>
