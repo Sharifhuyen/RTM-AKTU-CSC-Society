@@ -1,219 +1,179 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
-import {
-    FaHeading,
-    FaImage,
-    FaPen,
-    FaCheckCircle,
-    FaTimesCircle,
-    FaTags,
-} from "react-icons/fa";
 
-const FloatingAlert = ({ type, message }) => {
-    if (!message) return null;
-    const base = "fixed top-4 right-4 z-50 flex items-center p-4 rounded shadow-md text-white";
-    const color = type === "success" ? "bg-green-600" : "bg-red-600";
+const UpdateBlog = ({ blog, onClose, onUpdateSuccess }) => {
+    const editorRef = useRef(null);
+    const [title, setTitle] = useState(blog.title);
+    const [authorName, setAuthorName] = useState(blog.authorName);
+    const [tag, setTag] = useState(blog.tag);
+    const [imageURL, setImageURL] = useState(blog.imageURL || "");
+    const [content, setContent] = useState(blog.content || "");
+    const [showAlert, setShowAlert] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
 
-    return (
-        <div className={`${base} ${color}`}>
-            {type === "success" ? <FaCheckCircle className="mr-2 text-xl" /> : <FaTimesCircle className="mr-2 text-xl" />}
-            <span>{message}</span>
-        </div>
-    );
-};
-
-const WarningModal = ({ onContinue, onCancel }) => (
-    <div className="fixed inset-0 z-50 bg-black bg-opacity-40 flex items-center justify-center">
-        <div className="bg-white rounded-xl shadow-xl p-6 max-w-md w-full">
-            <h2 className="text-xl font-semibold text-gray-800 mb-4">Important Formatting Notice</h2>
-            <p className="text-gray-700 mb-4">
-                Please paste content from <strong>Microsoft Word</strong> or <strong>Google Docs</strong> only.
-            </p>
-            <div className="flex justify-end gap-3">
-                <button onClick={onCancel} className="px-4 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400">Cancel</button>
-                <button onClick={onContinue} className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Continue</button>
-            </div>
-        </div>
-    </div>
-);
-
-const UpdateBlog = ({ blogId, initialData }) => {
-    const [title, setTitle] = useState(initialData?.title || "");
-    const [image, setImage] = useState(null);
-    const [previewImage, setPreviewImage] = useState(initialData?.imageUrl || "");
-    const [content, setContent] = useState(initialData?.content || "");
-    const [tag, setTag] = useState(initialData?.tag || "");
-    const [tags, setTags] = useState([]);
-    const [alert, setAlert] = useState({ type: "", message: "" });
-    const [showEditor, setShowEditor] = useState(true);
-    const [showModal, setShowModal] = useState(false);
-    const [hasConfirmed, setHasConfirmed] = useState(true); // Assume true for editing
-
-    useEffect(() => {
-        fetch("/api/tags")
-            .then((res) => res.json())
-            .then((data) => setTags(data))
-            .catch(() => showAlert("error", "Failed to load tags."));
-    }, []);
-
-    const handleImageUpload = (e) => {
-        const file = e.target.files[0];
-        setImage(file);
-        setPreviewImage(URL.createObjectURL(file));
+    const handleEditorChange = (newContent) => {
+        setContent(newContent);
     };
 
-    const showAlert = (type, message) => {
-        setAlert({ type, message });
-        setTimeout(() => setAlert({ type: "", message: "" }), 3000);
+    const countWords = (html) => {
+        const text = html.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+        return text ? text.split(" ").length : 0;
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const wordCount = countWords(content);
 
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(content, "text/html");
-        const textOnly = doc.body.textContent || "";
-        const wordCount = textOnly.trim().split(/\s+/).filter(Boolean).length;
-
-        if (!title.trim() || !tag || textOnly.trim().length === 0) {
-            showAlert("error", "Title, tag, and content are required.");
+        if (!title || !authorName || !tag || !content) {
+            setErrorMessage("All fields are required.");
+            setShowAlert(true);
             return;
         }
 
-        if (wordCount < 300) {
-            showAlert("error", "Content must be at least 300 words.");
+        if (wordCount < 100) {
+            setErrorMessage("Blog content must be at least 100 words.");
+            setShowAlert(true);
             return;
         }
 
         try {
-            const formData = new FormData();
-            formData.append("title", title);
-            formData.append("content", content);
-            formData.append("tag", tag);
-            if (image) formData.append("image", image);
+            const updatedBlog = {
+                title,
+                imageURL,
+                content,
+                tag,
+                updatedAt: new Date().toISOString(),
+            };
 
-            const response = await fetch(`/api/blogs/${blogId}`, {
+            const response = await fetch(`http://localhost:5000/blog/${blog._id}`, {
                 method: "PUT",
-                body: formData,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(updatedBlog),
             });
 
-            if (!response.ok) throw new Error("Failed to update blog.");
-            showAlert("success", "Blog updated successfully!");
-        } catch (err) {
-            showAlert("error", err.message || "Update failed.");
+            if (!response.ok) {
+                throw new Error("Failed to update blog");
+            }
+
+            const result = await response.json();
+
+            // ✅ Show toast and close modal
+            onUpdateSuccess(result);
+            onClose();
+        } catch (error) {
+            console.error("Update error:", error);
+            setErrorMessage("An error occurred while updating the blog.");
+            setShowAlert(true);
         }
     };
 
-    const handleModalCancel = () => {
-        setShowModal(false);
-        setShowEditor(false);
-    };
-
-    const handleModalContinue = () => {
-        setHasConfirmed(true);
-        setShowEditor(true);
-        setShowModal(false);
-    };
+    useEffect(() => {
+        if (showAlert) {
+            const timer = setTimeout(() => setShowAlert(false), 3000);
+            return () => clearTimeout(timer);
+        }
+    }, [showAlert]);
 
     return (
-        <>
-            <FloatingAlert type={alert.type} message={alert.message} />
-            {showModal && <WarningModal onContinue={handleModalContinue} onCancel={handleModalCancel} />}
+        <div className="max-h-[80vh] overflow-y-auto pr-2">
+            {showAlert && (
+                <div className="mb-4 px-4 py-2 bg-red-100 border border-red-400 text-red-700 rounded">
+                    {errorMessage}
+                </div>
+            )}
 
-            <div className="max-w-4xl mx-auto mt-12 mb-8 bg-white shadow-xl rounded-xl p-8">
-                <h2 className="text-3xl font-bold text-center text-blue-700 mb-8 flex items-center justify-center gap-3">
-                    <FaPen className="text-blue-500" />
-                    Update Blog Post
-                </h2>
+            <h2 className="text-2xl font-semibold mb-4 text-blue-700">Update Blog</h2>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                    <div>
-                        <label className="block text-sm font-semibold mb-1 flex items-center gap-2">
-                            <FaHeading className="text-blue-600" />
-                            Blog Title
-                        </label>
-                        <input
-                            type="text"
-                            value={title}
-                            onChange={(e) => setTitle(e.target.value)}
-                            className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        />
-                    </div>
+            <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                    <label className="block text-sm font-medium text-gray-700">Title</label>
+                    <input
+                        type="text"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        className="w-full mt-1 p-2 border rounded-md focus:ring focus:ring-blue-200"
+                        required
+                    />
+                </div>
 
-                    <div>
-                        <label className="block text-sm font-semibold mb-1 flex items-center gap-2">
-                            <FaTags className="text-blue-600" />
-                            Blog Tag
-                        </label>
-                        <select
-                            value={tag}
-                            onChange={(e) => setTag(e.target.value)}
-                            className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        >
-                            <option value="">Select a tag</option>
-                            {tags.map((t) => (
-                                <option key={t._id} value={t._id}>
-                                    {t.name}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
+                <div>
+                    <label className="block text-sm font-medium text-gray-700">Author Name</label>
+                    <input
+                        type="text"
+                        value={authorName}
+                        onChange={(e) => setAuthorName(e.target.value)}
+                        className="w-full mt-1 p-2 border rounded-md focus:ring focus:ring-blue-200"
+                        required
+                    />
+                </div>
 
-                    <div>
-                        <label className="block text-sm font-semibold mb-1 flex items-center gap-2">
-                            <FaImage className="text-blue-600" />
-                            Replace Image (optional)
-                        </label>
-                        <input
-                            type="file"
-                            accept="image/*"
-                            onChange={handleImageUpload}
-                            className="block w-full text-sm text-gray-700 border border-gray-300 rounded p-2 cursor-pointer"
-                        />
-                        {previewImage && (
-                            <img
-                                src={previewImage}
-                                alt="Preview"
-                                className="mt-3 w-64 rounded shadow border"
-                            />
-                        )}
-                    </div>
+                <div>
+                    <label className="block text-sm font-medium text-gray-700">Tag / Category</label>
+                    <input
+                        type="text"
+                        value={tag}
+                        onChange={(e) => setTag(e.target.value)}
+                        className="w-full mt-1 p-2 border rounded-md focus:ring focus:ring-blue-200"
+                        required
+                    />
+                </div>
 
-                    <div>
-                        <label className="block text-sm font-semibold mb-1 text-blue-600">Blog Content</label>
-                        {showEditor ? (
-                            <Editor
-                                apiKey="1lae18f58y1u574pz4i3r1m8g2kh11i17axcqr24l1ftr31q"
-                                value={content}
-                                onEditorChange={(newContent) => setContent(newContent)}
-                                init={{
-                                    height: 400,
-                                    menubar: false,
-                                    plugins: ["lists", "paste"],
-                                    toolbar: "undo redo | bold italic underline | bullist numlist | removeformat",
-                                    paste_as_text: false,
-                                    content_style: "body { font-family: Arial, sans-serif; font-size: 14px; line-height: 1.6; }",
-                                }}
-                            />
-                        ) : (
-                            <div
-                                onClick={() => setShowModal(true)}
-                                className="w-full h-[200px] border-2 border-dashed border-blue-400 rounded flex items-center justify-center text-gray-500 cursor-pointer"
-                            >
-                                Click here to load editor...
-                            </div>
-                        )}
-                    </div>
+                <div>
+                    <label className="block text-sm font-medium text-gray-700">Image URL</label>
+                    <input
+                        type="text"
+                        value={imageURL}
+                        onChange={(e) => setImageURL(e.target.value)}
+                        className="w-full mt-1 p-2 border rounded-md focus:ring focus:ring-blue-200"
+                    />
+                </div>
 
+                <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Blog Content</label>
+                    <Editor
+                        apiKey="1lae18f58y1u574pz4i3r1m8g2kh11i17axcqr24l1ftr31q"
+                        onInit={(evt, editor) => (editorRef.current = editor)}
+                        initialValue={blog.content} // Only from original props
+                        value={content} // Controlled mode
+                        onEditorChange={handleEditorChange}
+                        init={{
+                            height: 400,
+                            menubar: false,
+                            plugins: [
+                                "advlist autolink lists link image charmap preview anchor",
+                                "searchreplace visualblocks code fullscreen",
+                                "insertdatetime media table paste code help wordcount",
+                            ],
+                            toolbar:
+                                "undo redo | formatselect | bold italic backcolor | " +
+                                "alignleft aligncenter alignright alignjustify | " +
+                                "bullist numlist outdent indent | removeformat | help",
+                            branding: false,
+                        }}
+                    />
+
+                    <p className="text-xs text-gray-500 mt-1">Minimum 100 words required.</p>
+                </div>
+
+                <div className="flex justify-end gap-3 pt-2">
+                    <button
+                        type="button"
+                        onClick={onClose}
+                        className="px-4 py-2 bg-gray-300 hover:bg-gray-400 rounded"
+                    >
+                        Cancel
+                    </button>
                     <button
                         type="submit"
-                        className="w-full bg-blue-400 text-white py-3 rounded hover:bg-blue-700 transition font-semibold"
+                        className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
                     >
                         Update Blog
                     </button>
-                </form>
-            </div>
-        </>
+                </div>
+            </form>
+        </div>
     );
 };
 

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { FaTrash, FaEdit, FaCheckCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import UpdateBlog from "../Dashboard/UpdateBlog"; // Adjust path if necessary
 
 const ManageBlogs = () => {
     const [blogs, setBlogs] = useState([]);
     const [selectedBlog, setSelectedBlog] = useState(null);
-    const [toast, setToast] = useState(null); // for showing alerts
+    const [toast, setToast] = useState(null);
+    const [showUpdateModal, setShowUpdateModal] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -39,9 +41,7 @@ const ManageBlogs = () => {
                 body: JSON.stringify({ _id: id }),
             });
 
-            if (!response.ok) {
-                throw new Error("Failed to update status");
-            }
+            if (!response.ok) throw new Error("Failed to update status");
 
             setBlogs(prev =>
                 prev.map(blog =>
@@ -61,19 +61,52 @@ const ManageBlogs = () => {
         }
     };
 
-    const handleDelete = (id) => {
-        setBlogs(prev => prev.filter(blog => blog._id !== id));
-        if (selectedBlog?._id === id) setSelectedBlog(null);
+    const handleDelete = async (id) => {
+        try {
+            const response = await fetch(`http://localhost:5000/blog/${id}`, {
+                method: "DELETE"
+            });
+
+            if (!response.ok) throw new Error("Failed to delete");
+
+            // Optimistically update UI
+            setBlogs(prev => prev.filter(blog => blog._id !== id));
+
+            if (selectedBlog?._id === id) {
+                setSelectedBlog(null);
+            }
+
+            showToast("Blog deleted successfully.", "success");
+        } catch (error) {
+            console.error("Error deleting blog:", error);
+            showToast("Failed to delete the blog.", "error");
+        }
     };
 
     const handleUpdate = (id) => {
-        navigate(`/edit-blog/${id}`);
+        const blogToEdit = blogs.find(blog => blog._id === id);
+        setSelectedBlog(blogToEdit);
+        setShowUpdateModal(true);
     };
 
     const handleViewDetails = (blog) => {
         setSelectedBlog(blog);
     };
 
+    const handleUpdateSuccess = (updatedBlog) => {
+        setBlogs((prevBlogs) =>
+            prevBlogs.map((blog) =>
+                blog._id === updatedBlog._id ? updatedBlog : blog
+            )
+        );
+
+        // Update selectedBlog if it's the one edited
+        if (selectedBlog?._id === updatedBlog._id) {
+            setSelectedBlog(updatedBlog);
+        }
+
+        showToast("Blog updated successfully.", "success");
+    };
     return (
         <div className="max-w-7xl mx-auto px-4 py-8 relative">
 
@@ -105,12 +138,10 @@ const ManageBlogs = () => {
                                     </h3>
                                     <p className="text-sm text-blue-600 font-medium">#{blog.tag}</p>
                                     <p className="text-sm text-gray-600">By {blog.authorName}</p>
-                                    <span
-                                        className={`text-xs mt-1 inline-block px-2 py-0.5 rounded-full font-semibold ${blog.status === "Approved"
-                                            ? "bg-green-100 text-green-700"
-                                            : "bg-yellow-100 text-yellow-700"
-                                            }`}
-                                    >
+                                    <span className={`text-xs mt-1 inline-block px-2 py-0.5 rounded-full font-semibold ${blog.status === "Approved"
+                                        ? "bg-green-100 text-green-700"
+                                        : "bg-yellow-100 text-yellow-700"
+                                        }`}>
                                         {blog.status}
                                     </span>
                                 </div>
@@ -179,6 +210,34 @@ const ManageBlogs = () => {
                     )}
                 </div>
             </div>
+
+            {/* Update Blog Modal */}
+            {showUpdateModal && selectedBlog && (
+                <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+                    <div className="bg-white rounded-lg shadow-lg max-w-3xl w-full relative p-6">
+                        <button
+                            className="absolute top-2 right-2 text-gray-500 hover:text-gray-800"
+                            onClick={() => setShowUpdateModal(false)}
+                        >
+                            ✕
+                        </button>
+                        {selectedBlog && (
+                            <UpdateBlog
+                                blog={selectedBlog}
+                                onClose={() => {
+                                    setSelectedBlog(null);
+                                    setShowUpdateModal(false);
+                                }}
+                                onUpdateSuccess={(updatedBlog) => {
+                                    handleUpdateSuccess(updatedBlog);
+                                    setShowUpdateModal(false);
+                                }}
+                            />
+                        )}
+
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
