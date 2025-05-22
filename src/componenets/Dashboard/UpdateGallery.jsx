@@ -10,19 +10,24 @@ import {
 
 const UpdateGallery = ({ selectedItemId, onUpdate, onCancel }) => {
     const [formData, setFormData] = useState({
+        _id: "",
         title: "",
         description: "",
         imageUrl: "",
         category: "",
     });
 
+    const [errorMessage, setErrorMessage] = useState("");
+    const [showAlert, setShowAlert] = useState(false);
+
     useEffect(() => {
-        fetch("/imageGallery.json")
+        fetch("http://localhost:5000/galleries")
             .then((res) => res.json())
             .then((data) => {
                 const selectedItem = data.find((item) => item._id === selectedItemId);
                 if (selectedItem) {
                     setFormData({
+                        _id: selectedItem._id,
                         title: selectedItem.title || "",
                         description: selectedItem.description || "",
                         imageUrl: selectedItem.imageUrl || "",
@@ -40,20 +45,24 @@ const UpdateGallery = ({ selectedItemId, onUpdate, onCancel }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const { _id, title, description, imageUrl, category } = formData;
 
-        const { title, description, imageUrl, category } = formData;
         if (!title || !description || !imageUrl || !category) {
-            alert("All fields are required.");
+            setErrorMessage("All fields are required.");
+            setShowAlert(true);
             return;
         }
 
         const updatedItem = {
-            sl: selectedItemId,
-            ...formData,
+            title,
+            description,
+            imageUrl,
+            category,
+            updatedAt: new Date().toISOString(),
         };
 
         try {
-            const response = await fetch(`/api/gallery/${selectedItemId}`, {
+            const response = await fetch(`http://localhost:5000/galleries/${_id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -66,9 +75,11 @@ const UpdateGallery = ({ selectedItemId, onUpdate, onCancel }) => {
             }
 
             const data = await response.json();
-            onUpdate(data);
+            if (onUpdate) onUpdate(data);
         } catch (error) {
-            alert("Error updating item: " + error.message);
+            console.error("Update error:", error);
+            setErrorMessage("An error occurred while updating the gallery item.");
+            setShowAlert(true);
         }
     };
 
@@ -77,11 +88,15 @@ const UpdateGallery = ({ selectedItemId, onUpdate, onCancel }) => {
             <h2 className="text-3xl font-extrabold text-center text-blue-600 mb-8 tracking-wide">
                 Update Gallery Item
             </h2>
+            {showAlert && (
+                <div className="bg-red-100 text-red-700 p-4 rounded mb-4">
+                    {errorMessage}
+                </div>
+            )}
             <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                    <label className="flex items-center gap-2 text-md font-bold text-blue-600 mb-2">
-                        <FaHeading className="font-bold" /> Title{" "}
-                        <span className="text-red-500">*</span>
+                    <label className="flex items-center gap-2 font-bold text-blue-600 mb-2">
+                        <FaHeading /> Title <span className="text-red-500">*</span>
                     </label>
                     <input
                         type="text"
@@ -89,14 +104,13 @@ const UpdateGallery = ({ selectedItemId, onUpdate, onCancel }) => {
                         value={formData.title}
                         onChange={handleChange}
                         required
-                        className="mt-1 block w-full border border-blue-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="block w-full border border-blue-300 rounded-md p-3 focus:ring-2 focus:ring-blue-500"
                     />
                 </div>
 
                 <div>
-                    <label className="flex items-center gap-2 text-md font-bold text-blue-600 mb-2">
-                        <FaAlignLeft className="font-bold" /> Description{" "}
-                        <span className="text-red-500">*</span>
+                    <label className="flex items-center gap-2 font-bold text-blue-600 mb-2">
+                        <FaAlignLeft /> Description <span className="text-red-500">*</span>
                     </label>
                     <textarea
                         name="description"
@@ -104,14 +118,13 @@ const UpdateGallery = ({ selectedItemId, onUpdate, onCancel }) => {
                         value={formData.description}
                         onChange={handleChange}
                         required
-                        className="mt-1 block w-full border border-blue-300 rounded-md p-3 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="block w-full border border-blue-300 rounded-md p-3 resize-y focus:ring-2 focus:ring-blue-500"
                     ></textarea>
                 </div>
 
                 <div>
-                    <label className="flex items-center gap-2 text-md font-bold text-blue-600 mb-2">
-                        <FaImage className="font-bold" /> Image URL{" "}
-                        <span className="text-red-500">*</span>
+                    <label className="flex items-center gap-2 font-bold text-blue-600 mb-2">
+                        <FaImage /> Image URL <span className="text-red-500">*</span>
                     </label>
                     <input
                         type="url"
@@ -119,21 +132,20 @@ const UpdateGallery = ({ selectedItemId, onUpdate, onCancel }) => {
                         value={formData.imageUrl}
                         onChange={handleChange}
                         required
-                        className="mt-1 block w-full border border-blue-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="block w-full border border-blue-300 rounded-md p-3 focus:ring-2 focus:ring-blue-500"
                     />
                 </div>
 
                 <div>
-                    <label className="flex items-center gap-2 text-md font-bold text-blue-600 mb-2">
-                        <FaTags className="font-bold" /> Category{" "}
-                        <span className="text-red-500">*</span>
+                    <label className="flex items-center gap-2 font-bold text-blue-600 mb-2">
+                        <FaTags /> Category <span className="text-red-500">*</span>
                     </label>
                     <select
                         name="category"
                         value={formData.category}
                         onChange={handleChange}
                         required
-                        className="mt-1 block w-full border border-blue-300 rounded-md p-3 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="block w-full border border-blue-300 rounded-md p-3 bg-white focus:ring-2 focus:ring-blue-500"
                     >
                         <option value="">Select a Category</option>
                         <option value="Event">Event</option>
@@ -148,14 +160,14 @@ const UpdateGallery = ({ selectedItemId, onUpdate, onCancel }) => {
                     <button
                         type="button"
                         onClick={onCancel}
-                        className="flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-6 py-3 rounded-md transition"
+                        className="flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-md"
                     >
                         <FaTimesCircle size={20} />
                         Cancel
                     </button>
                     <button
                         type="submit"
-                        className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-md transition"
+                        className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md"
                     >
                         <FaSave size={20} />
                         Update
