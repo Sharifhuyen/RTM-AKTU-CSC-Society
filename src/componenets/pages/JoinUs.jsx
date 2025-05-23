@@ -1,167 +1,159 @@
 import React, { useState } from 'react';
+import { useAuth } from '../Firebase/AuthContext';
+import { FaUser, FaEnvelope, FaLock, FaImage, FaBuilding, FaHashtag } from 'react-icons/fa';
 
 const JoinUs = () => {
+    const { register } = useAuth();
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
         email: '',
+        password: '',
         imageUrl: '',
         departmentName: '',
         batchNumber: ''
     });
-
     const [status, setStatus] = useState(null);
 
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setStatus('Submitting...');
+        setStatus('Registering...');
+
+        const fullName = `${formData.firstName} ${formData.lastName}`;
 
         try {
-            // Simulate successful form submission (Replace this with your backend logic)
-            // await axios.post('/api/join', formData);
+            await register(formData.email, formData.password, fullName);
 
-            setStatus('✅ Success! Your application has been submitted.');
+            const userInfo = {
+                ...formData,
+                role: 'user'
+            };
 
-            // Reset form data after successful submission
-            setFormData({
-                firstName: '',
-                lastName: '',
-                email: '',
-                imageUrl: '',
-                departmentName: '',
-                batchNumber: ''
+            await fetch('http://localhost:5000/users', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(userInfo)
             });
-        } catch (err) {
-            setStatus('❌ Error! Please try again later.');
+
+            setStatus('✅ Registration successful!');
+        } catch (error) {
+            console.error('Registration error:', error);
+            setStatus(`❌ Error: ${error.message}`);
         }
     };
 
     return (
-        <section className="bg-gradient-to-br from-indigo-100 to-white py-16 px-6 md:px-20 lg:px-32">
-            <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-xl p-6 md:p-12">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-indigo-600 mb-6 sm:mb-8">
-                    Join the RTM-AKTU CSC Society
-                </h2>
-                <p className="text-center text-gray-600 text-base sm:text-lg mb-10">
-                    Become a part of RTM Al-Kabir Technical University's most active tech community. Fill in the details below and get involved!
-                </p>
+        <div className="max-w-3xl mx-auto mt-10 p-6 bg-white rounded shadow">
+            <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Join Us</h2>
+            <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {/* First Name */}
+                <div>
+                    <label className="block mb-1 text-sm font-medium text-gray-700"><FaUser className="inline mr-2" />First Name</label>
+                    <input
+                        name="firstName"
+                        placeholder="Enter your first name"
+                        value={formData.firstName}
+                        onChange={handleChange}
+                        required
+                        className="w-full px-4 py-2 border rounded"
+                    />
+                </div>
 
-                <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    {/* First Name */}
-                    <div>
-                        <label className="block text-gray-700 mb-1">
-                            First Name <span className="text-red-500">*</span>
-                        </label>
-                        <input
-                            type="text"
-                            name="firstName"
-                            value={formData.firstName}
-                            onChange={handleChange}
-                            required
-                            placeholder="Enter your first name"
-                            className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-400 focus:outline-none"
-                        />
-                    </div>
+                {/* Last Name */}
+                <div>
+                    <label className="block mb-1 text-sm font-medium text-gray-700"><FaUser className="inline mr-2" />Last Name</label>
+                    <input
+                        name="lastName"
+                        placeholder="Enter your last name"
+                        value={formData.lastName}
+                        onChange={handleChange}
+                        required
+                        className="w-full px-4 py-2 border rounded"
+                    />
+                </div>
 
-                    {/* Last Name */}
-                    <div>
-                        <label className="block text-gray-700 mb-1">
-                            Last Name <span className="text-red-500">*</span>
-                        </label>
-                        <input
-                            type="text"
-                            name="lastName"
-                            value={formData.lastName}
-                            onChange={handleChange}
-                            required
-                            placeholder="Enter your last name"
-                            className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-400 focus:outline-none"
-                        />
-                    </div>
+                {/* Email */}
+                <div>
+                    <label className="block mb-1 text-sm font-medium text-gray-700"><FaEnvelope className="inline mr-2" />Email</label>
+                    <input
+                        name="email"
+                        type="email"
+                        placeholder="Enter your email address"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                        className="w-full px-4 py-2 border rounded"
+                    />
+                </div>
 
-                    {/* Email */}
-                    <div>
-                        <label className="block text-gray-700 mb-1">
-                            Email Address <span className="text-red-500">*</span>
-                        </label>
-                        <input
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            required
-                            placeholder="Enter your email address"
-                            className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-400 focus:outline-none"
-                        />
-                    </div>
+                {/* Password */}
+                <div>
+                    <label className="block mb-1 text-sm font-medium text-gray-700"><FaLock className="inline mr-2" />Password</label>
+                    <input
+                        name="password"
+                        type="password"
+                        placeholder="Enter a secure password"
+                        value={formData.password}
+                        onChange={handleChange}
+                        required
+                        className="w-full px-4 py-2 border rounded"
+                    />
+                </div>
 
-                    {/* Image URL */}
-                    <div>
-                        <label className="block text-gray-700 mb-1">
-                            Profile Image URL <span className="text-red-500">*</span>
-                        </label>
-                        <input
-                            type="url"
-                            name="imageUrl"
-                            value={formData.imageUrl}
-                            onChange={handleChange}
-                            required
-                            placeholder="Enter your profile image URL"
-                            className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-400 focus:outline-none"
-                        />
-                    </div>
+                {/* Image URL */}
+                <div>
+                    <label className="block mb-1 text-sm font-medium text-gray-700"><FaImage className="inline mr-2" />Image URL</label>
+                    <input
+                        name="imageUrl"
+                        placeholder="Link to your profile image"
+                        value={formData.imageUrl}
+                        onChange={handleChange}
+                        required
+                        className="w-full px-4 py-2 border rounded"
+                    />
+                </div>
 
-                    {/* Department Name */}
-                    <div>
-                        <label className="block text-gray-700 mb-1">
-                            Department Name <span className="text-red-500">*</span>
-                        </label>
-                        <input
-                            type="text"
-                            name="departmentName"
-                            value={formData.departmentName}
-                            onChange={handleChange}
-                            required
-                            placeholder="Enter your department name"
-                            className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-400 focus:outline-none"
-                        />
-                    </div>
+                {/* Department Name */}
+                <div>
+                    <label className="block mb-1 text-sm font-medium text-gray-700"><FaBuilding className="inline mr-2" />Department Name</label>
+                    <input
+                        name="departmentName"
+                        placeholder="e.g., Computer Science"
+                        value={formData.departmentName}
+                        onChange={handleChange}
+                        required
+                        className="w-full px-4 py-2 border rounded"
+                    />
+                </div>
 
-                    {/* Batch Number */}
-                    <div>
-                        <label className="block text-gray-700 mb-1">
-                            Batch Number <span className="text-red-500">*</span>
-                        </label>
-                        <input
-                            type="text"
-                            name="batchNumber"
-                            value={formData.batchNumber}
-                            onChange={handleChange}
-                            required
-                            placeholder="Enter your batch number"
-                            className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-400 focus:outline-none"
-                        />
-                    </div>
+                {/* Batch Number */}
+                <div>
+                    <label className="block mb-1 text-sm font-medium text-gray-700"><FaHashtag className="inline mr-2" />Batch Number</label>
+                    <input
+                        name="batchNumber"
+                        placeholder="e.g., 2023"
+                        value={formData.batchNumber}
+                        onChange={handleChange}
+                        required
+                        className="w-full px-4 py-2 border rounded"
+                    />
+                </div>
 
-                    {/* Submit Button */}
-                    <div className="lg:col-span-2 text-center mt-4">
-                        <button
-                            type="submit"
-                            className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-3 rounded-lg transition duration-200"
-                        >
-                            Submit Application
-                        </button>
-                        {status && (
-                            <p className="mt-4 text-sm text-gray-600">{status}</p>
-                        )}
-                    </div>
-                </form>
-            </div>
-        </section>
+                {/* Submit Button (Full Width) */}
+                <div className="md:col-span-2">
+                    <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
+                        Register
+                    </button>
+                </div>
+            </form>
+
+            {status && <p className="mt-4 text-center text-sm text-gray-700">{status}</p>}
+        </div>
     );
 };
 

@@ -1,16 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import RTMAKTULogo from "../assets/RTMAKTULogo.png";
-import { FaBars, FaTimes, FaSignInAlt, FaUserPlus } from "react-icons/fa";
+import { FaBars, FaTimes, FaSignInAlt, FaUserPlus, FaSignOutAlt } from "react-icons/fa";
 import { MdDashboard } from "react-icons/md";
-
-// Simulated user (replace with real auth later)
-const user = {
-    email: "user@example.com", // Change to null to test logout view
-};
+import { useAuth } from "../componenets/Firebase/AuthContext";
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const { user, logout } = useAuth();
 
     const navItems = [
         { name: "Home", path: "/" },
@@ -22,7 +19,6 @@ const Header = () => {
         { name: "Contact", path: "/contact" },
     ];
 
-    // Conditionally add Dashboard
     if (user?.email) {
         navItems.push({
             name: "Dashboard",
@@ -36,14 +32,12 @@ const Header = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
                     {/* Left: Logo + Brand */}
-                    <div className="flex items-center">
-                        <img className="h-8 w-8 mr-2" src={RTMAKTULogo} alt="Logo" />
-                        <span className="text-xl font-bold text-gray-800">
-                            RTM-AKTU CSE Society
-                        </span>
+                    <div className="flex items-center space-x-3">
+                        <img className="h-8 w-8" src={RTMAKTULogo} alt="Logo" />
+                        <span className="text-xl font-bold text-gray-800">RTM-AKTU CSE Society</span>
                     </div>
 
-                    {/* Middle: Navigation Items - Hidden on small screens */}
+                    {/* Middle: Navigation Items */}
                     <div className="hidden lg:flex lg:space-x-6">
                         {navItems.map((item) => (
                             <Link
@@ -57,9 +51,22 @@ const Header = () => {
                         ))}
                     </div>
 
-                    {/* Right: Login & Join Us (only show if user is not logged in) */}
+                    {/* Right: User info & buttons */}
                     <div className="hidden lg:flex items-center space-x-4">
-                        {!user?.email && (
+                        {user?.email ? (
+                            <>
+                                <span className="text-gray-700 font-semibold">
+                                    👋 {user?.email ? user.email.split('@')[0].charAt(0).toUpperCase() + user.email.split('@')[0].slice(1) : "User"}
+                                </span>
+                                <button
+                                    onClick={logout}
+                                    className="flex items-center bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition duration-200"
+                                >
+                                    <FaSignOutAlt className="mr-1" />
+                                    Logout
+                                </button>
+                            </>
+                        ) : (
                             <>
                                 <Link
                                     to="/login"
@@ -106,8 +113,22 @@ const Header = () => {
                                 {item.name}
                             </Link>
                         ))}
-                        {/* Mobile Login & Join Us (only if not logged in) */}
-                        {!user?.email && (
+
+                        {user?.email ? (
+                            <>
+                                <span className="text-gray-700 font-semibold">👋 {user.firstName || "User"}</span>
+                                <button
+                                    onClick={() => {
+                                        logout();
+                                        setIsOpen(false);
+                                    }}
+                                    className="flex items-center bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+                                >
+                                    <FaSignOutAlt className="mr-1" />
+                                    Logout
+                                </button>
+                            </>
+                        ) : (
                             <>
                                 <Link
                                     to="/login"

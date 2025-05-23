@@ -6,7 +6,7 @@ const AllMembers = () => {
 
     useEffect(() => {
         const fetchMembers = async () => {
-            const response = await fetch('/cscMembers.json');
+            const response = await fetch('http://localhost:5000/users');
             const data = await response.json();
             setMembers(data);
         };
