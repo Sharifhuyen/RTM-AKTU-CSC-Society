@@ -6,7 +6,7 @@ const AllMembers = () => {
 
     useEffect(() => {
         const fetchMembers = async () => {
-            const response = await fetch('http://localhost:5000/users');
+            const response = await fetch('https://rtm-aktu-csc-society-server-side.onrender.com/users');
             const data = await response.json();
             setMembers(data);
         };

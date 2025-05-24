@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { FaTrash, FaEdit, FaCheckCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import UpdateBlog from "../Dashboard/UpdateBlog"; // Adjust path if necessary
+import { useAuth } from '../Firebase/AuthContext';
+
 
 const MyBlogs = () => {
     const [blogs, setBlogs] = useState([]);
@@ -9,22 +11,33 @@ const MyBlogs = () => {
     const [toast, setToast] = useState(null);
     const [showUpdateModal, setShowUpdateModal] = useState(false);
     const navigate = useNavigate();
+    const { dbUser, loading } = useAuth();
+
 
     useEffect(() => {
-        fetch("http://localhost:5000/blogs")
+        if (loading) return;  // Wait for dbUser to be ready
+
+        fetch("https://rtm-aktu-csc-society-server-side.onrender.com/blogs")
             .then((res) => res.json())
             .then((data) => {
-                const updated = data.map(blog => ({
-                    ...blog,
-                    status: blog.status || "Pending"
-                }));
-                setBlogs(updated);
+                // Filter blogs by dbUser.email and status = "Approved"
+                const filteredBlogs = data
+                    .map(blog => ({
+                        ...blog,
+                        status: blog.status || "Pending"
+                    }))
+                    .filter(blog =>
+                        blog.status === "Approved" &&
+                        blog.authorEmail === dbUser.email // replace 'authorEmail' if needed
+                    );
+
+                setBlogs(filteredBlogs);
             })
             .catch((err) => {
                 console.error("Error fetching blogs:", err);
                 showToast("Failed to fetch blogs.", "error");
             });
-    }, [blogs]);
+    }, [dbUser, loading]);
 
     const showToast = (message, type = "error") => {
         setToast({ message, type });
@@ -33,7 +46,7 @@ const MyBlogs = () => {
 
     const handleDelete = async (id) => {
         try {
-            const response = await fetch(`http://localhost:5000/blog/${id}`, {
+            const response = await fetch(`https://rtm-aktu-csc-society-server-side.onrender.com/blog/${id}`, {
                 method: "DELETE"
             });
 

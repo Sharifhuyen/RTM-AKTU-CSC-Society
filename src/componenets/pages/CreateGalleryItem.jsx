@@ -60,7 +60,7 @@ const CreateGalleryItem = () => {
                 createdAt: new Date().toISOString()
             };
 
-            const response = await fetch('http://localhost:5000/gallery', {
+            const response = await fetch('https://rtm-aktu-csc-society-server-side.onrender.com/gallery', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

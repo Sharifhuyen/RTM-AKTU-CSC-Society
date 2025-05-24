@@ -9,7 +9,7 @@ const ManageGallery = () => {
     const [toast, setToast] = useState(null);
 
     useEffect(() => {
-        fetch("http://localhost:5000/galleries")
+        fetch("https://rtm-aktu-csc-society-server-side.onrender.com/galleries")
             .then((res) => res.json())
             .then((data) => setGallery(data))
             .catch((err) => {
@@ -25,7 +25,7 @@ const ManageGallery = () => {
 
     const handleDelete = async (id) => {
         try {
-            const response = await fetch(`http://localhost:5000/galleries/${id}`, {
+            const response = await fetch(`https://rtm-aktu-csc-society-server-side.onrender.com/galleries/${id}`, {
                 method: "DELETE",
             });
             if (!response.ok) throw new Error("Delete failed");

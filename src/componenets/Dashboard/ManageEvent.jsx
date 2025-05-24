@@ -9,7 +9,7 @@ const ManageEvent = () => {
     const [showUpdateModal, setShowUpdateModal] = useState(false);
 
     useEffect(() => {
-        fetch("http://localhost:5000/events")
+        fetch("https://rtm-aktu-csc-society-server-side.onrender.com/events")
             .then((res) => res.json())
             .then((data) => setEvents(data))
             .catch((err) => {
@@ -25,7 +25,7 @@ const ManageEvent = () => {
 
     const handleDelete = async (id) => {
         try {
-            const response = await fetch(`http://localhost:5000/event/${id}`, {
+            const response = await fetch(`https://rtm-aktu-csc-society-server-side.onrender.com/event/${id}`, {
                 method: "DELETE",
             });
 

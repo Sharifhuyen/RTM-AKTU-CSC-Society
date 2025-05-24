@@ -6,7 +6,7 @@ const BlogDetails = () => {
     const [blog, setBlog] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:5000/blogs')
+        fetch('https://rtm-aktu-csc-society-server-side.onrender.com/blogs')
             .then(res => res.json())
             .then(data => {
                 const found = data.find(b => b._id === id);

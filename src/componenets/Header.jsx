@@ -7,7 +7,7 @@ import { useAuth } from "../componenets/Firebase/AuthContext";
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const { user, logout } = useAuth();
+    const { user, logout, dbUser } = useAuth();
 
     const navItems = [
         { name: "Home", path: "/" },
@@ -56,7 +56,7 @@ const Header = () => {
                         {user?.email ? (
                             <>
                                 <span className="text-gray-700 font-semibold">
-                                    👋 {user?.email ? user.email.split('@')[0].charAt(0).toUpperCase() + user.email.split('@')[0].slice(1) : "User"}
+                                    👋 {user?.firstName ? user.firstName : "User"}
                                 </span>
                                 <button
                                     onClick={logout}
@@ -114,9 +114,9 @@ const Header = () => {
                             </Link>
                         ))}
 
-                        {user?.email ? (
+                        {dbUser?.email ? (
                             <>
-                                <span className="text-gray-700 font-semibold">👋 {user.firstName || "User"}</span>
+                                <span className="text-gray-700 font-semibold">👋 {dbUser?.firstName || "User"}</span>
                                 <button
                                     onClick={() => {
                                         logout();

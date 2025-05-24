@@ -6,9 +6,12 @@ const AllBlogs = () => {
     const [tagFilter, setTagFilter] = useState('');
 
     useEffect(() => {
-        fetch('http://localhost:5000/blogs')
+        fetch('https://rtm-aktu-csc-society-server-side.onrender.com/blogs')
             .then(res => res.json())
-            .then(data => setBlogs(data));
+            .then(data => {
+                const approvedBlogs = data.filter(blog => blog.status === "Approved");
+                setBlogs(approvedBlogs);
+            });
     }, []);
 
     const filteredBlogs = tagFilter

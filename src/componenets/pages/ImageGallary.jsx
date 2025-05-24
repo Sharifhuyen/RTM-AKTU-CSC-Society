@@ -10,7 +10,7 @@ export default function ImageGallery() {
     const [selectedImage, setSelectedImage] = useState(null);
 
     useEffect(() => {
-        fetch("http://localhost:5000/galleries")
+        fetch("https://rtm-aktu-csc-society-server-side.onrender.com/galleries")
             .then((res) => res.json())
             .then((data) => {
                 setImages(data);

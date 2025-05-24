@@ -45,7 +45,7 @@ const UpdateBlog = ({ blog, onClose, onUpdateSuccess }) => {
                 updatedAt: new Date().toISOString(),
             };
 
-            const response = await fetch(`http://localhost:5000/blog/${blog._id}`, {
+            const response = await fetch(`https://rtm-aktu-csc-society-server-side.onrender.com/blog/${blog._id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

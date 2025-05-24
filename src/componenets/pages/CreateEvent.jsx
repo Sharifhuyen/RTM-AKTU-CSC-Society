@@ -46,7 +46,7 @@ const CreateEvent = () => {
                 eventDay
             };
 
-            const response = await fetch('http://localhost:5000/event', {
+            const response = await fetch('https://rtm-aktu-csc-society-server-side.onrender.com/event', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(eventWithDay),

@@ -7,7 +7,7 @@ const EventDetails = () => {
     const [event, setEvent] = React.useState(null);
 
     React.useEffect(() => {
-        fetch('http://localhost:5000/events')
+        fetch('https://rtm-aktu-csc-society-server-side.onrender.com/events')
             .then((res) => res.json())
             .then((data) => {
                 const selectedEvent = data.find((e) => e._id === id);

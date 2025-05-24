@@ -10,7 +10,7 @@ const HomeThirdSection = () => {
     const [scrollDirection, setScrollDirection] = useState(1); // 1 = left-to-right, -1 = right-to-left
 
     useEffect(() => {
-        fetch('http://localhost:5000/events')
+        fetch('https://rtm-aktu-csc-society-server-side.onrender.com/events')
             .then((res) => res.json())
             .then((data) => {
                 // Repeat events 5 times to simulate infinite scroll in both directions

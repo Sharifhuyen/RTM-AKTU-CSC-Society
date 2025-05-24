@@ -1,23 +1,42 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import {
     FaBlog, FaTools, FaCalendarPlus,
     FaCalendarAlt, FaImage, FaImages, FaRegNewspaper
 } from 'react-icons/fa';
 
+import { useAuth } from '../Firebase/AuthContext';
 import CreateBlog from '../pages/CreateBlog';
 import ManageBlogs from '../Dashboard/ManageBlogs';
 import CreateEvent from '../pages/CreateEvent';
 import ManageEvent from '../Dashboard/ManageEvent';
 import CreateGalleryItem from '../pages/CreateGalleryItem';
 import ManageGallery from '../Dashboard/ManageGallery';
-import MyBlogs from '../Dashboard/MyBlogs'; // ✅ Import MyBlogs component
+import MyBlogs from '../Dashboard/MyBlogs';
 
-const Dashboard = ({ role = 'admin' }) => {
+const Dashboard = () => {
     const contentRef = useRef(null);
+    const { dbUser, loading } = useAuth();
+
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    const handleItemClick = (index) => {
+        setActiveIndex(index);
+        if (window.innerWidth < 1024 && contentRef.current) {
+            setTimeout(() => {
+                contentRef.current.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        }
+    };
+
+    if (loading || !dbUser) {
+        return <div className="text-center mt-10">Loading Dashboard...</div>;
+    }
+
+    const role = dbUser.role;
 
     const userItems = [
         { label: 'Create Blog', component: <CreateBlog />, icon: <FaBlog /> },
-        { label: 'My Blogs', component: <MyBlogs />, icon: <FaRegNewspaper /> }, // ✅ Removed UpdateBlog
+        { label: 'My Blogs', component: <MyBlogs />, icon: <FaRegNewspaper /> },
     ];
 
     const adminExtraItems = [
@@ -30,21 +49,12 @@ const Dashboard = ({ role = 'admin' }) => {
 
     const dashboardItems = role === 'admin' ? [...userItems, ...adminExtraItems] : userItems;
 
-    const [activeIndex, setActiveIndex] = useState(0);
+    console.log("dbUser from AuthContext:", dbUser);
 
-    const handleItemClick = (index) => {
-        setActiveIndex(index);
-        // Scroll to content on small screens
-        if (window.innerWidth < 1024 && contentRef.current) {
-            setTimeout(() => {
-                contentRef.current.scrollIntoView({ behavior: 'smooth' });
-            }, 100);
-        }
-    };
 
     return (
         <div className="flex flex-col lg:flex-row min-h-screen bg-gray-100">
-            {/* Sidebar with new color */}
+            {/* Sidebar */}
             <aside className="w-full lg:w-64 bg-blue-800 text-white shadow-md z-10">
                 <div className="p-4 font-bold text-lg text-center border-b border-blue-700">Dashboard</div>
                 <ul className="p-2 space-y-1">
@@ -63,7 +73,7 @@ const Dashboard = ({ role = 'admin' }) => {
 
             {/* Main Content */}
             <main ref={contentRef} className="flex-1 p-4 overflow-y-auto">
-                {dashboardItems[activeIndex].component}
+                {dashboardItems[activeIndex]?.component || <div>Select an option</div>}
             </main>
         </div>
     );

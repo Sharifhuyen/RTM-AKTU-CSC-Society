@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { FaHeading, FaImage, FaPen, FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import { useAuth } from "../Firebase/AuthContext";
 
 const FloatingAlert = ({ type, message }) => {
     if (!message) return null;
-
     const base = "fixed top-4 right-4 z-50 flex items-center p-4 rounded shadow-md text-white";
     const color = type === "success" ? "bg-green-600" : "bg-red-600";
 
@@ -57,6 +57,8 @@ const CreateBlog = () => {
     const [showEditor, setShowEditor] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [hasConfirmed, setHasConfirmed] = useState(false);
+    const { user } = useAuth();
+
 
     const showAlert = (type, message) => {
         setAlert({ type, message });
@@ -91,10 +93,12 @@ const CreateBlog = () => {
             tag,
             createdAt,
             authorName,
+            status: "Pending",
+            authorEmail: user.email,
         };
 
         try {
-            const response = await fetch("http://localhost:5000/blog", {
+            const response = await fetch("https://rtm-aktu-csc-society-server-side.onrender.com/blog", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

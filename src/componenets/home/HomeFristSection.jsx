@@ -4,6 +4,8 @@ import Slide02 from "../../assets/HomeSlider/slide02.jpg";
 import Slide03 from "../../assets/HomeSlider/slide03.jpg";
 import Slide04 from "../../assets/HomeSlider/slide04.jpg";
 import Slide05 from "../../assets/HomeSlider/slide05.jpg";
+import { Link } from 'react-router-dom';
+
 
 const images = [Slide01, Slide02, Slide03, Slide04, Slide05];
 
@@ -43,9 +45,12 @@ const HomeFirstSection = () => {
             advancing society to unprecedented levels of achievement.
           </p>
 
-          <button className="bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700 transition w-max">
+          <Link
+            to="/joinus"
+            className="bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700 transition w-max inline-block text-center"
+          >
             Join Us
-          </button>
+          </Link>
         </div>
 
         {/* Right Part - Image Slider */}

@@ -21,7 +21,7 @@ const UpdateGallery = ({ selectedItemId, onUpdate, onCancel }) => {
     const [showAlert, setShowAlert] = useState(false);
 
     useEffect(() => {
-        fetch("http://localhost:5000/galleries")
+        fetch("https://rtm-aktu-csc-society-server-side.onrender.com/galleries")
             .then((res) => res.json())
             .then((data) => {
                 const selectedItem = data.find((item) => item._id === selectedItemId);
@@ -62,7 +62,7 @@ const UpdateGallery = ({ selectedItemId, onUpdate, onCancel }) => {
         };
 
         try {
-            const response = await fetch(`http://localhost:5000/galleries/${_id}`, {
+            const response = await fetch(`https://rtm-aktu-csc-society-server-side.onrender.com/galleries/${_id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

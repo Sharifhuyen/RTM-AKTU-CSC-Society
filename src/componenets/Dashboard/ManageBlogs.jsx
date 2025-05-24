@@ -11,7 +11,7 @@ const ManageBlogs = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch("http://localhost:5000/blogs")
+        fetch("https://rtm-aktu-csc-society-server-side.onrender.com/blogs")
             .then((res) => res.json())
             .then((data) => {
                 const updated = data.map(blog => ({
@@ -33,7 +33,7 @@ const ManageBlogs = () => {
 
     const handleApprove = async (id) => {
         try {
-            const response = await fetch(`http://localhost:5000/blogs/${id}`, {
+            const response = await fetch(`https://rtm-aktu-csc-society-server-side.onrender.com/blogs/${id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -63,7 +63,7 @@ const ManageBlogs = () => {
 
     const handleDelete = async (id) => {
         try {
-            const response = await fetch(`http://localhost:5000/blog/${id}`, {
+            const response = await fetch(`https://rtm-aktu-csc-society-server-side.onrender.com/blog/${id}`, {
                 method: "DELETE"
             });
 
