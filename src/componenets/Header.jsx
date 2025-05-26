@@ -19,7 +19,7 @@ const Header = () => {
         { name: "Contact", path: "/contact" },
     ];
 
-    if (user?.email) {
+    if (dbUser?.email) {
         navItems.push({
             name: "Dashboard",
             path: "/dashboard",
@@ -53,10 +53,10 @@ const Header = () => {
 
                     {/* Right: User info & buttons */}
                     <div className="hidden lg:flex items-center space-x-4">
-                        {user?.email ? (
+                        {dbUser?.email ? (
                             <>
                                 <span className="text-gray-700 font-semibold">
-                                    👋 {user?.firstName ? user.firstName : "User"}
+                                    👋 {user?.firstName ? dbUser.firstName : "User"}
                                 </span>
                                 <button
                                     onClick={logout}

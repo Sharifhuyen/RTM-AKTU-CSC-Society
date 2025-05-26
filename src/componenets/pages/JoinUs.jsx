@@ -23,9 +23,11 @@ const JoinUs = () => {
         imageUrl: '',
         departmentName: '',
         batchNumber: '',
+
     });
 
     const [status, setStatus] = useState(null);
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -60,6 +62,7 @@ const JoinUs = () => {
                 departmentName: formData.departmentName,
                 batchNumber: formData.batchNumber,
                 role: 'user',
+                type: "Member"
             };
 
             const res = await fetch(
@@ -73,12 +76,17 @@ const JoinUs = () => {
 
             if (!res.ok) throw new Error('Failed to save user info to DB');
 
-            setStatus('✅ Registration successful!');
-            setTimeout(() => navigate('/dashboard'), 1000); // Redirect after 1s
+            setShowSuccessModal(true);
+            setStatus(null); // clear any previous status
         } catch (error) {
             console.error('Registration error:', error);
             setStatus(`❌ Error: ${error.message}`);
         }
+    };
+
+    const handleCloseModal = () => {
+        setShowSuccessModal(false);
+        navigate('/dashboard');
     };
 
     return (
@@ -235,14 +243,33 @@ const JoinUs = () => {
                         </button>
                     </div>
 
-                    {/* Status Message */}
+                    {/* Error or Progress Status */}
                     {status && (
-                        <div className="md:col-span-2 text-center text-sm text-gray-700 mt-2">
+                        <div className="md:col-span-2 text-center text-sm text-red-700 mt-2">
                             {status}
                         </div>
                     )}
                 </form>
             </div>
+
+            {/* Success Modal */}
+            {showSuccessModal && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                    <div className="bg-white rounded-2xl shadow-lg p-8 max-w-md w-full text-center">
+                        <h2 className="text-2xl font-bold text-green-600 mb-4">🎉 Registration Successful!</h2>
+                        <p className="text-gray-700 mb-6">
+                            A verification email has been sent to your email address. <br />
+                            Please verify your email before logging in.
+                        </p>
+                        <button
+                            onClick={handleCloseModal}
+                            className="bg-green-600 hover:bg-green-700 text-white py-2 px-6 rounded-xl font-semibold"
+                        >
+                            Go to Dashboard
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

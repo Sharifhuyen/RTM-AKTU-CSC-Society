@@ -5,6 +5,7 @@ import {
     signInWithEmailAndPassword,
     signOut,
     updateProfile,
+    sendEmailVerification,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase.config";
 
@@ -15,7 +16,6 @@ export const AuthProvider = ({ children }) => {
     const [dbUser, setDbUser] = useState(null); // Backend user
     const [loading, setLoading] = useState(true);
 
-    // Fetch user from backend
     const fetchDbUser = async (email) => {
         try {
             const response = await fetch(`https://rtm-aktu-csc-society-server-side.onrender.com/user/?email=${email}`);
@@ -36,7 +36,6 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
-
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
             if (currentUser) {
@@ -44,6 +43,7 @@ export const AuthProvider = ({ children }) => {
                 setUser({
                     uid: currentUser.uid,
                     email: currentUser.email,
+                    emailVerified: currentUser.emailVerified,
                     firstName,
                 });
                 await fetchDbUser(currentUser.email);
@@ -55,19 +55,18 @@ export const AuthProvider = ({ children }) => {
         });
 
         return () => unsubscribe();
-    }, []); // Only run on mount
-
-    console.log(user)
-
+    }, []);
 
     const register = async (email, password, fullName) => {
         const result = await createUserWithEmailAndPassword(auth, email, password);
         await updateProfile(result.user, { displayName: fullName });
+        await sendEmailVerification(result.user);
 
         setUser({
             uid: result.user.uid,
             email: result.user.email,
             firstName: fullName.split(" ")[0],
+            emailVerified: false,
         });
 
         await fetchDbUser(result.user.email);
@@ -75,11 +74,18 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (email, password) => {
         const result = await signInWithEmailAndPassword(auth, email, password);
+
+        if (!result.user.emailVerified) {
+            throw new Error("Email not verified");
+        }
+
         setUser({
             uid: result.user.uid,
             email: result.user.email,
             firstName: result.user.displayName?.split(" ")[0] || "User",
+            emailVerified: true,
         });
+
         await fetchDbUser(result.user.email);
     };
 

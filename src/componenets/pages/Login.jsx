@@ -10,6 +10,7 @@ const Login = () => {
 
     const [formData, setFormData] = useState({ email: '', password: '' });
     const [status, setStatus] = useState(null);
+    const [showUnverifiedModal, setShowUnverifiedModal] = useState(false);
 
     const handleChange = (e) =>
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -20,11 +21,16 @@ const Login = () => {
 
         try {
             await login(formData.email, formData.password);
-            setStatus('Login successful!');
+            setStatus(null);
             navigate(from, { replace: true });
         } catch (error) {
             console.error('Login error:', error);
-            setStatus(`Error: ${error.message}`);
+            if (error.message.includes('Email not verified')) {
+                setShowUnverifiedModal(true);
+                setStatus(null);
+            } else {
+                setStatus(`Error: ${error.message}`);
+            }
         }
     };
 
@@ -76,6 +82,24 @@ const Login = () => {
                     </p>
                 </div>
             </div>
+
+            {/* Unverified Email Modal */}
+            {showUnverifiedModal && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                    <div className="bg-white rounded-2xl shadow-lg p-8 max-w-md w-full text-center">
+                        <h2 className="text-2xl font-bold text-red-600 mb-4">⚠️ Email Not Verified</h2>
+                        <p className="text-gray-700 mb-6">
+                            Your email is not verified. Please check your inbox and click on the verification link before logging in.
+                        </p>
+                        <button
+                            onClick={() => setShowUnverifiedModal(false)}
+                            className="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-xl font-semibold"
+                        >
+                            Close
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
