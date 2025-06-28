@@ -31,7 +31,7 @@ export default function ContactUs() {
     return (
         <section className="px-4 py-16 max-w-7xl mx-auto">
             <h2 className="text-4xl font-bold text-center text-blue-700 mb-12">
-                Contact Us RTM-AKTU CSC Society
+                Contact Us RTM-AKTU CSE Society
             </h2>
 
             <div className="grid md:grid-cols-2 gap-10">
@@ -39,18 +39,18 @@ export default function ContactUs() {
                 <div className="bg-white shadow-xl rounded-xl p-8 space-y-6">
                     <img
                         src="/contact.jpg"
-                        alt="Contact RTM AKTU CSC"
+                        alt="Contact RTM AKTU CSE"
                         className="w-full h-64 sm:h-80 object-cover rounded-xl shadow-lg"
                     />
 
                     <div className="space-y-3">
                         <div>
                             <h3 className="text-lg font-semibold text-gray-800">📍 Address</h3>
-                            <p className="text-gray-600">CSC Office, Main Campus, RTM-AKTU, TB Gate, Sylhet, Bangladesh.</p>
+                            <p className="text-gray-600">CSE Office, Main Campus, RTM-AKTU, TB Gate, Sylhet, Bangladesh.</p>
                         </div>
                         <div>
                             <h3 className="text-lg font-semibold text-gray-800">📧 Email</h3>
-                            <p className="text-gray-600">csc@rtmaktu.edu.bd</p>
+                            <p className="text-gray-600">CSE@rtmaktu.edu.bd</p>
                         </div>
                         <div>
                             <h3 className="text-lg font-semibold text-gray-800">📞 Phone</h3>

@@ -5,7 +5,7 @@
         "description": "Join our annual 24-hour coding marathon to build innovative projects and win prizes!",
         "imageUrl": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3",
         "category": "Event",
-        "uploadedBy": "CSC Admin",
+        "uploadedBy": "CSE Admin",
         "createdAt": "2025-01-15"
     },
     {
@@ -23,7 +23,7 @@
         "description": "Dive into the latest trends in machine learning with talks from academic and industry leaders.",
         "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXjslOWlBWtKoJseUc_zJ6xWbjZl_3lQrsiw&s",
         "category": "Event",
-        "uploadedBy": "CSC Admin",
+        "uploadedBy": "CSE Admin",
         "createdAt": "2025-02-12"
     },
     {
@@ -37,11 +37,11 @@
     },
     {
         "sl": 5,
-        "title": "CSC Code Repository",
+        "title": "CSE Code Repository",
         "description": "Access our open-source repository of student projects and contribute to collaborative coding.",
         "imageUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97",
         "category": "Resource",
-        "uploadedBy": "CSC Admin",
+        "uploadedBy": "CSE Admin",
         "createdAt": "2025-01-20"
     },
     {
@@ -59,7 +59,7 @@
         "description": "Create your own video game in a weekend-long game dev competition using Unity.",
         "imageUrl": "https://images.unsplash.com/photo-1542751371-adc38448a05e",
         "category": "Event",
-        "uploadedBy": "CSC Admin",
+        "uploadedBy": "CSE Admin",
         "createdAt": "2025-04-01"
     },
     {
@@ -73,11 +73,11 @@
     },
     {
         "sl": 9,
-        "title": "CSC Mentorship Program",
+        "title": "CSE Mentorship Program",
         "description": "Pair up with senior students to guide you through your CS journey and career prep.",
         "imageUrl": "https://images.unsplash.com/photo-1523240795612-9a054b0db644",
         "category": "Program",
-        "uploadedBy": "CSC Admin",
+        "uploadedBy": "CSE Admin",
         "createdAt": "2025-02-20"
     },
     {
@@ -95,7 +95,7 @@
         "description": "Connect with top tech companies and explore internship and job opportunities.",
         "imageUrl": "https://images.unsplash.com/photo-1516321497487-e288fb19713f",
         "category": "Event",
-        "uploadedBy": "CSC Admin",
+        "uploadedBy": "CSE Admin",
         "createdAt": "2025-04-20"
     },
     {
@@ -118,11 +118,11 @@
     },
     {
         "sl": 14,
-        "title": "CSC Study Group Kickoff",
+        "title": "CSE Study Group Kickoff",
         "description": "Join our weekly study groups to collaborate on coursework and prep for exams.",
         "imageUrl": "https://images.unsplash.com/photo-1524178232363-1fb2b075b655",
         "category": "Program",
-        "uploadedBy": "CSC Admin",
+        "uploadedBy": "CSE Admin",
         "createdAt": "2025-02-15"
     },
     {
@@ -136,11 +136,11 @@
     },
     {
         "sl": 16,
-        "title": "CSC Newsletter Archive",
-        "description": "Browse past newsletters for updates, tips, and highlights from the CSC community.",
+        "title": "CSE Newsletter Archive",
+        "description": "Browse past newsletters for updates, tips, and highlights from the CSE community.",
         "imageUrl": "https://images.unsplash.com/photo-1499750310107-5fef28a66643",
         "category": "Resource",
-        "uploadedBy": "CSC Admin",
+        "uploadedBy": "CSE Admin",
         "createdAt": "2025-01-10"
     }
 ]

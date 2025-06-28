@@ -7,7 +7,7 @@ const AboutUs = () => {
             {/* Hero Section */}
             <section className="text-center py-20 px-6 bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 text-white">
                 <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-                    The CSC Society at RTM Al-Kabir Technical University
+                    The CSE Society at RTM Al-Kabir Technical University
                 </h1>
                 <p className="text-lg sm:text-xl mb-8 max-w-4xl mx-auto leading-relaxed">
                     We are a community of passionate tech enthusiasts aiming to shape the future of technology.
@@ -19,7 +19,7 @@ const AboutUs = () => {
             <section className="py-12 px-6 md:px-16 bg-white shadow-xl mb-16 rounded-lg max-w-6xl mx-auto">
                 <h2 className="text-3xl font-bold text-indigo-600 text-center mb-8">Our Mission</h2>
                 <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                    The CSC Society is a platform where students can foster their technical skills, collaborate
+                    The CSE Society is a platform where students can foster their technical skills, collaborate
                     on innovative projects, and network with industry professionals. Our mission is to provide
                     students with opportunities to grow, learn, and prepare for a successful future in the tech
                     world. We do this by organizing workshops, hackathons, guest lectures, and much more.
@@ -87,7 +87,7 @@ const AboutUs = () => {
             <section className="py-12 px-6 md:px-16 bg-white shadow-xl mb-16 rounded-lg max-w-6xl mx-auto">
                 <h2 className="text-3xl font-bold text-indigo-600 text-center mb-8">Our Impact</h2>
                 <p className="text-lg text-gray-700 leading-relaxed mb-6 max-w-3xl mx-auto">
-                    Since its inception, the CSC Society has positively impacted the lives of countless students. Our
+                    Since its inception, the CSE Society has positively impacted the lives of countless students. Our
                     members have successfully transitioned into top tech companies, built impressive portfolios, and
                     have gone on to become industry leaders. We continue to empower our community, driving progress
                     in the tech ecosystem.

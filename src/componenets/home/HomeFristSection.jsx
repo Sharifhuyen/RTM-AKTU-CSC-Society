@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Slide01 from "../../assets/HomeSlider/slide01.jpeg";
+import Slide01 from "../../assets/HomeSlider/slide01.jpg";
 import Slide02 from "../../assets/HomeSlider/slide02.jpg";
 import Slide03 from "../../assets/HomeSlider/slide03.jpg";
 import Slide04 from "../../assets/HomeSlider/slide04.jpg";

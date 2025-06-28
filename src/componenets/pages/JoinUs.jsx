@@ -93,7 +93,7 @@ const JoinUs = () => {
         <div className="min-h-screen bg-green-50 flex items-center justify-center px-4 py-12">
             <div className="bg-white p-8 rounded-3xl shadow-lg max-w-3xl w-full">
                 <h2 className="text-3xl font-bold text-center text-green-700 mb-8">
-                    Join the CSC Society 🚀
+                    Join the RTM-AKTU CSE Society 🚀
                 </h2>
 
                 <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-6">

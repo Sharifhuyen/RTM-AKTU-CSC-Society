@@ -6,14 +6,15 @@ import {
     signOut,
     updateProfile,
     sendEmailVerification,
+    sendPasswordResetEmail,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase.config";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(null); // Firebase user
-    const [dbUser, setDbUser] = useState(null); // Backend user
+    const [user, setUser] = useState(null);
+    const [dbUser, setDbUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
     const fetchDbUser = async (email) => {
@@ -76,6 +77,7 @@ export const AuthProvider = ({ children }) => {
         const result = await signInWithEmailAndPassword(auth, email, password);
 
         if (!result.user.emailVerified) {
+            await signOut(auth);
             throw new Error("Email not verified");
         }
 
@@ -95,8 +97,18 @@ export const AuthProvider = ({ children }) => {
         setDbUser(null);
     };
 
+    const resendVerification = async (email, password) => {
+        const result = await signInWithEmailAndPassword(auth, email, password);
+        await sendEmailVerification(result.user);
+        await signOut(auth);
+    };
+
+    const resetPassword = async (email) => {
+        await sendPasswordResetEmail(auth, email);
+    };
+
     return (
-        <AuthContext.Provider value={{ user, dbUser, login, logout, register, loading }}>
+        <AuthContext.Provider value={{ user, dbUser, login, logout, register, resendVerification, resetPassword, loading }}>
             {children}
         </AuthContext.Provider>
     );

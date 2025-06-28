@@ -14,7 +14,7 @@ const Footer = () => {
             <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                 {/* About Section */}
                 <div>
-                    <h2 className="text-xl font-bold mb-4">RTM-AKTU CSC Society</h2>
+                    <h2 className="text-xl font-bold mb-4">RTM-AKTU CSE Society</h2>
                     <p className="text-sm text-gray-300">
                         Promoting technical excellence, leadership, and innovation in computer science and engineering through community, collaboration, and creativity.
                     </p>
@@ -59,7 +59,7 @@ const Footer = () => {
             </div>
 
             <div className="text-center text-gray-400 text-sm mt-10 border-t border-gray-700 pt-6">
-                © {new Date().getFullYear()} RTM-AKTU CSC Society. All rights reserved.
+                © {new Date().getFullYear()} RTM-AKTU CSE Society. All rights reserved.
             </div>
         </footer>
     );
